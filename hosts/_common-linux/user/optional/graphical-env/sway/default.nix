@@ -77,46 +77,40 @@ in {
       };
       
       colors = {
-        # 全局背景色，与 waybar 背景一致
         background = "#282a36";
         
-        # 聚焦窗口 - 使用紫色边框突出显示
         focused = {
           background = "#282a36";
           border = "#bd93f9";
           childBorder = "#bd93f9";
           indicator = "#bd93f9";
-          text = "#f8f8f2";  # 白色文字，确保可读性
+          text = "#f8f8f2"; 
         };
         
-        # 非活跃但在聚焦工作区的窗口 - 较暗的紫色
         focusedInactive = {
           background = "#282a36";
-          border = "#6272a4";  # 暗紫色边框
+          border = "#6272a4";
           childBorder = "#6272a4";
           indicator = "#6272a4";
           text = "#f8f8f2";
         };
         
-        # 非聚焦窗口 - 更加低调的颜色
         unfocused = {
           background = "#282a36";
-          border = "#44475a";  # 深灰色边框
+          border = "#44475a";  
           childBorder = "#44475a";
           indicator = "#44475a";
-          text = "#6272a4";  # 暗紫色文字
+          text = "#6272a4"; 
         };
         
-        # 紧急状态窗口 - 使用红色警告
         urgent = {
           background = "#282a36";
-          border = "#ff5555";  # 红色边框
+          border = "#ff5555";  
           childBorder = "#ff5555";
           indicator = "#ff5555";
           text = "#f8f8f2";
         };
         
-        # 占位符窗口
         placeholder = {
           background = "#282a36";
           border = "#44475a";
@@ -135,6 +129,18 @@ in {
       bindsym Print exec ${pkgs.grim}/bin/grim - | ${pkgs.coreutils}/bin/tee ~/Pictures/Screenshots/$(${pkgs.coreutils}/bin/date +'%Y-%m-%d_%H-%M-%S').png | ${pkgs.wl-clipboard}/bin/wl-copy
       bindsym Shift+Print exec ${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - - | ${pkgs.coreutils}/bin/tee ~/Pictures/Screenshots/$(${pkgs.coreutils}/bin/date +'%Y-%m-%d_%H-%M-%S').png | ${pkgs.wl-clipboard}/bin/wl-copy
 
+
+      bindsym XF86AudioRaiseVolume exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+      bindsym XF86AudioLowerVolume exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+      bindsym XF86AudioMute exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+
+      bindsym XF86MonBrightnessUp exec ${pkgs.brightnessctl}/bin/brightnessctl set +5%
+      bindsym XF86MonBrightnessDown exec ${pkgs.bash}/bin/bash -c 'current=$(${pkgs.brightnessctl}/bin/brightnessctl get); max=$(${pkgs.brightnessctl}/bin/brightnessctl max); if [ $((current * 100 / max - 5)) -lt 1 ]; then ${pkgs.brightnessctl}/bin/brightnessctl set 1%; else ${pkgs.brightnessctl}/bin/brightnessctl set 5%-; fi'
+
+      bindsym XF86KbdBrightnessUp exec ${pkgs.brightnessctl}/bin/brightnessctl -d $(ls /sys/class/leds/ | ${pkgs.coreutils}/bin/grep kbd_backlight | ${pkgs.coreutils}/bin/head -n1) set +1
+      bindsym XF86KbdBrightnessDown exec ${pkgs.brightnessctl}/bin/brightnessctl -d $(ls /sys/class/leds/ | ${pkgs.coreutils}/bin/grep kbd_backlight | ${pkgs.coreutils}/bin/head -n1) set 1-
+
       mode Mouse {
         bindsym a mode default, exec '${wlKbptrActiveWin}/bin/wl-kbptr-sway-active-win; ${pkgs.sway}/bin/swaymsg mode Mouse'
         bindsym Shift+a mode default, exec '${pkgs.wl-kbptr}/bin/wl-kbptr; ${pkgs.sway}/bin/swaymsg mode Mouse'
@@ -149,7 +155,8 @@ in {
         bindsym s seat seat0 cursor press button1
         bindsym --release s seat seat0 cursor release button1
 
-        # Middle button
+        # Middle buttoear
+
         bindsym d seat seat0 cursor press button2
         bindsym --release d seat seat0 cursor release button2
 

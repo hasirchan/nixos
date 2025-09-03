@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }: let 
-
   app = pkgs.symlinkJoin {
     name = "scripts";
     paths = with pkgs; [
@@ -58,10 +57,17 @@ in {
         on-click = "${pkgs.kitty}/bin/kitty wiremix";
       };
       
-      "backlight" = {
+      "backlight" = let 
+
+        brightnessPlus = "${pkgs.brightnessctl}/bin/brightnessctl set +5%";
+        brightnessMinus = "${pkgs.bash}/bin/bash -c 'current=$(${pkgs.brightnessctl}/bin/brightnessctl get); max=$(${pkgs.brightnessctl}/bin/brightnessctl max); if [ $((current * 100 / max - 5)) -lt 1 ]; then ${pkgs.brightnessctl}/bin/brightnessctl set 1%; else ${pkgs.brightnessctl}/bin/brightnessctl set 5%-; fi'";
+
+      in {
         format = "BRT {percent}%";
-        on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set +5%";
-        on-scroll-down = "${pkgs.bash}/bin/bash -c 'current=$(${pkgs.brightnessctl}/bin/brightnessctl get); max=$(${pkgs.brightnessctl}/bin/brightnessctl max); if [ $((current * 100 / max - 5)) -lt 1 ]; then ${pkgs.brightnessctl}/bin/brightnessctl set 1%; else ${pkgs.brightnessctl}/bin/brightnessctl set 5%-; fi'";
+        on-scroll-up = brightnessPlus;
+        on-scroll-down = brightnessMinus;
+        on-click = brightnessPlus;
+        on-click-right = brightnessMinus; 
       };
       
       "custom/battery-status" = {
