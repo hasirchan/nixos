@@ -8,7 +8,7 @@ let
     installPhase = ''
       mkdir -p $out/bin
       makeWrapper ${src} $out/bin/kmonad-swap-ctrl-caps-for-usb-kbd.sh \
-        --set PATH "${lib.makeBinPath [ pkgs.bash pkgs.inotify-tools pkgs.gettext pkgs.coreutils ]}"
+        --set PATH "${lib.makeBinPath [ pkgs.bash pkgs.kmonad pkgs.findutils pkgs.inotify-tools pkgs.gettext pkgs.coreutils ]}"
       chmod +x $out/bin/kmonad-swap-ctrl-caps-for-usb-kbd.sh
     '';
     dontUnpack = true;
@@ -25,6 +25,7 @@ in
       Restart = "always";
       RestartSec = "5";
       User = "root";
+      Group = "root"; 
     };
   };
 }

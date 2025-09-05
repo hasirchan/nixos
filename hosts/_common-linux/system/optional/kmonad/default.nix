@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... } :
 {
+  imports = [
+    ./services.nix
+  ];
   services.kmonad = {
     enable = true;
     keyboards = {
@@ -24,7 +27,6 @@
   };
   users.users.saya.extraGroups = [ "input" "uinput" ];
   environment.systemPackages = with pkgs; [
-    evtest
     kmonad
   ];
 }
