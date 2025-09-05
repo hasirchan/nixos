@@ -27,7 +27,7 @@ in {
       Service = {
         Type = "simple";
         Restart = "always";
-        Restartsec = 5;
+        RestartSec = 5;
         ExecStart = "${waybar-reminder}/bin/reminder.sh";
       };
 
