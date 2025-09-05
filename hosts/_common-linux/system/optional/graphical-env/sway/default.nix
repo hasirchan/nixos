@@ -47,4 +47,6 @@
 
   services.upower.enable = true;
   environment.etc."xterm".source = "${pkgs.kitty}/bin/kitty";
+  security.rtkit.enable = true;
+  services.udisks2.enable = true;
 }
