@@ -11,6 +11,7 @@
     aria2
     unar
     just
+    gettext
     # quickemu
   ];  
   programs.git.enable = true;
