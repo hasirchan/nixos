@@ -66,7 +66,7 @@ in {
 
       output = {
         "*" = {
-          bg = "/home/saya/Pictures/background/desktop.png fill";
+          bg = "/home/saya/Pictures/Backgrounds/desktop.png fill";
         };
       };
 

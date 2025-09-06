@@ -3,7 +3,7 @@
 {
   services.swayidle = let
     # Lock command
-    lock = "${pkgs.swaylock}/bin/swaylock -f -i /home/saya/Pictures/background/lockscreen.png";
+    lock = "${pkgs.swaylock}/bin/swaylock -f -i /home/saya/Pictures/Backgrounds/lockscreen.png";
     # Sway
     display = status: "${pkgs.sway}/bin/swaymsg 'output * power ${status}'";
   in {
