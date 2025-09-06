@@ -23,6 +23,7 @@ And if the module is one of home-manager's submodules, also need to make sure th
       settings = {
         "extensions.autoDisableScopes" = 0;
         "extensions.enabledScopes" = 15;
+        "browser.fullscreen.autohide" = false;
       };
     };
   };
