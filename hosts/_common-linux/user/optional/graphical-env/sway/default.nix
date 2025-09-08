@@ -141,6 +141,8 @@ in {
       bindsym XF86KbdBrightnessUp exec ${pkgs.brightnessctl}/bin/brightnessctl -d $(ls /sys/class/leds/ | ${pkgs.coreutils}/bin/grep kbd_backlight | ${pkgs.coreutils}/bin/head -n1) set +1
       bindsym XF86KbdBrightnessDown exec ${pkgs.brightnessctl}/bin/brightnessctl -d $(ls /sys/class/leds/ | ${pkgs.coreutils}/bin/grep kbd_backlight | ${pkgs.coreutils}/bin/head -n1) set 1-
 
+      bindsym ${mod}+Shift+x exec "${pkgs.swaylock}/bin/swaylock -f -i /home/saya/Pictures/Backgrounds/lockscreen.png
+
       mode Mouse {
         bindsym a mode default, exec '${wlKbptrActiveWin}/bin/wl-kbptr-sway-active-win; ${pkgs.sway}/bin/swaymsg mode Mouse'
         bindsym Shift+a mode default, exec '${pkgs.wl-kbptr}/bin/wl-kbptr; ${pkgs.sway}/bin/swaymsg mode Mouse'

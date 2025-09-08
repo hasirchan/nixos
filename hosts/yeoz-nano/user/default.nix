@@ -5,6 +5,7 @@
     ../../_common-linux/user
     ../../_common-linux/user/optional
     ../../_common-linux/user/optional/graphical-env/sway
+    ../../_common-linux/user/optional/pkgs/texlive.nix
   ];
 
   home.packages = with pkgs; [
