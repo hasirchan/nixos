@@ -7,7 +7,9 @@
     ../../_common-linux/user/optional/graphical-env/sway
     ./sway.nix
     ../../_common-linux/user/optional/pkgs/texlive.nix
-  ];
+    ../../_common-linux/user/optional/pkgs/default.nix
+    ../../_common-linux/user/optional/pkgs/aseprite.nix
+];
 
   home.packages = with pkgs; [
     vim

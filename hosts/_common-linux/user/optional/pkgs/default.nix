@@ -9,5 +9,6 @@
     vlc
     # aseprite
     nerd-fonts.meslo-lg
+    localsend
   ];
 }
