@@ -13,7 +13,8 @@
     just
     gettext
     # quickemu
-  ];  
+    pass
+ ];  
   programs.git.enable = true;
   # programs.vim.enable = true;
 }
