@@ -5,7 +5,7 @@
   systemd.sleep.extraConfig = ''
     AllowSuspend=no
     AllowHibernation=no
-    AllowHybridleep=no
+    AllowHybridSleep=no
     AllowSuspendThenHibernate=no
   '';
   services.daed = {
