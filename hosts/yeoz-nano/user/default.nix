@@ -2,12 +2,11 @@
 
 {
   imports = [
-    ../../_common-linux/user
-    ../../_common-linux/user/optional
-    ../../_common-linux/user/optional/graphical-env/sway
-    ../../_common-linux/user/optional/pkgs/texlive.nix
-    ../../_common-linux/user/optional/pkgs/aseprite.nix
-    ../../_common-linux/user/optional/pkgs/anki.nix
+    ../../_common-linux-labtop/user
+    ../../_common-linux-labtop/user/graphical-env/sway
+    ../../_common-linux-labtop/user/pkgs/texlive.nix
+    ../../_common-linux-labtop/user/pkgs/anki.nix
+    ../../_common-linux-labtop/user/pkgs/aseprite.nix
   ];
 
   home.packages = with pkgs; [

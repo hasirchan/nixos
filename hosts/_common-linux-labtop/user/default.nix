@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../_common-linux-headless/user
     ./services.nix
     ./pkgs
   ];

@@ -2,12 +2,9 @@
 
 {
   imports = [
-   ../../_common-linux/system
-   ../../_common-linux/system/optional
-   ../../_common-linux/system/optional/graphical-env/sway
-  #  ../../_common-linux/system/optional/impermanence
+    ../../_common-linux-labtop/system
+    ../../_common-linux-labtop/graphical-env/sway
   ];
-
 
   networking.hostName = "yeoz-nano"; 
 }
