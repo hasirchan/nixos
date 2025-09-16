@@ -2,14 +2,14 @@
 
 {
   imports = [
-    ../../_common-linux/user
-    ../../_common-linux/user/optional
-    ../../_common-linux/user/optional/graphical-env/sway
+    ../../_common-linux-labtop/user
+    ../../_common-linux-labtop/user/graphical-env/sway
+    ../../_common-linux-labtop/user/pkgs/texlive.nix
+    ../../_common-linux-labtop/user/pkgs/default.nix
+    ../../_common-linux-labtop/user/pkgs/aseprite.nix
+
     ./sway.nix
-    ../../_common-linux/user/optional/pkgs/texlive.nix
-    ../../_common-linux/user/optional/pkgs/default.nix
-    ../../_common-linux/user/optional/pkgs/aseprite.nix
-];
+  ];
 
   home.packages = with pkgs; [
     vim

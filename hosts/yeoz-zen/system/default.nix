@@ -2,9 +2,8 @@
 
 {
   imports = [
-   ../../_common-linux/system
-   ../../_common-linux/system/optional
-   ../../_common-linux/system/optional/graphical-env/sway
+   ../../_common-linux-labtop/system
+   ../../_common-linux-labtop/system/graphical-env/sway
    ./battery-charge-threshold.nix
   ];
 
