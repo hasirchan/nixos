@@ -7,7 +7,6 @@
    ./battery-charge-threshold.nix
   ];
 
-
   networking.hostName = "yeoz-zen"; 
   boot.blacklistedKernelModules = ["nouveau" "nvidia"];
 
