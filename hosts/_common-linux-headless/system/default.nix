@@ -4,6 +4,7 @@
     ./user-defined.nix
     ./services.nix
     ./pkgs.nix
+    ./firewall.nix
   ];
 
   time.timeZone = "Asia/Singapore";
@@ -18,7 +19,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   programs.mtr.enable = true;
-  networking.firewall.enable = false;
 
   programs.gnupg.agent = {
     enable = true;
