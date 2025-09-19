@@ -29,6 +29,22 @@ in {
     ./mako.nix
   ];
 
+  xdg = {
+    enable = true;
+    autostart.enable = true;
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+      desktop = null;
+    };
+  };
+
+  home.activation = {
+    ensureDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      mkdir -p ~/Pictures/Screenshots ~/Pictures/Backgrounds
+    '';
+  };
+
   home.packages = with pkgs; [
     wl-kbptr
     wlKbptrActiveWin
