@@ -18,6 +18,8 @@
       isDefault = false;
       id = 1;
       settings = {
+        "browser.fullscreen.autohide" = false;
+
         "network.proxy.type" = 1;
         "network.proxy.http" = "localhost";
         "network.proxy.http_port" = 4444;
