@@ -10,8 +10,13 @@
 
     ./sway.nix
   ];
-
-  home.packages = with pkgs; [
-    vim
-  ];
+  
+  services.syncthing = {
+    settings.devices."yeoz-nano" = {
+      id = "MB75EHH-7OE4HVL-B7EXFLI-ADWIZJW-26RHW3C-XSKVOKL-QXE5IEK-WLB6VAF"; 
+    }
+    settings.folders."share".devices = [
+      "yeoz-nano"
+    ];
+  }
 }
