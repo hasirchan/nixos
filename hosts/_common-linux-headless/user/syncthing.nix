@@ -8,7 +8,7 @@ in {
 
   services.syncthing = {
     enable = true;
-    tray.enable = true;
+    # tray.enable = true;
     settings = {
       devices = {
         "K40S" = {
