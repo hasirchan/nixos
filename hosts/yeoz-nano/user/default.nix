@@ -12,9 +12,9 @@
   services.syncthing = {
     settings.devices."yeoz-zen" = {
       id = "3ZNFOFZ-SUTO3XO-EFIDA5P-4FQ36UP-I26CARI-WDMXJBE-BCTH7WU-C5QGMQK"; 
-    }
+    };
     settings.folders."share".devices = [
       "yeoz-zen"
     ];
-  }
+  };
 }
