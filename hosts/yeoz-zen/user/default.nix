@@ -9,6 +9,7 @@
     ../../_common-linux-labtop/user/pkgs/aseprite.nix
 
     ./sway.nix
+    #./waybar.nix
   ];
   
   services.syncthing = {

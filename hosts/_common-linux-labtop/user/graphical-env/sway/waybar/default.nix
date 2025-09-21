@@ -76,51 +76,42 @@ in {
         };
       };
 
-      "temperature" = {
-        hwmon-path = [ "/sys/class/hwmon/hwmon3/temp1_input" ];
-        format = "TMP {temperatureC}°C";
-        critical-threshold = 80;
-        format-critical = "HOT {temperatureC}°C";
-      };
-
       "network#1" = {
         interface = "w*";
         format-wifi = "{ifname} {signalStrength}%";
         format-linked = "{ifname}?";
-        format-disconnected = "WIF?";
-        format-disabled = "WIF-";
+        format-disconnected = "{ifname}*";
+        format-disabled = "{ifname}-";
         tooltip-format-wifi = "SSID: {essid}\nIP: {ipaddr}";
-        tooltip-format-disconnected = "offline";
+        tooltip-format-disconnected = "Offline";
         tooltip-format-disabled = "{ifname} has been blocked by rfkill or something else.";
         on-click = "${pkgs.kitty}/bin/kitty nmtui";
       };
 
       "network#2" = {
         interface = "e*";
-        format-ethernet = "{ifname}";
+        format-ethernet = "{ifname}+";
         format-linked = "{ifname}?";
-        format-disconnected = "ETH?";
-        format-disabled = "ETH-";
+        format-disconnected = "{ifname}*";
+        rfkill = false;
         tooltip-format-ethernet = "IP: {ipaddr}\n";
-        tooltip-format-disconnected = "offline";
-        tooltip-format-disabled = "{ifname} has been blocked by rfkill or something else.";
+        tooltip-format-disconnected = "Offline";
         on-click = "${pkgs.kitty}/bin/kitty nmtui";
       };
 
 
       "bluetooth" = {
         # 基本格式设置
-        format = "BT";                    # 开启状态，无连接设备
+        format = "BT";                    
         format-disabled = "BT-";          # 控制器被禁用
-        format-off = "BT-";               # 控制器关闭但未禁用
-        format-on = "BT";                 # 开启状态，无连接设备
+        format-off = "BT!";               # 控制器关闭但未禁用
+        format-on = "BT*";                 # 开启状态，无连接设备
         format-connected = "BT+";         # 开启状态，已连接设备
-        format-connected-battery = "BT+"; # 已连接设备且有电量信息
+        format-connected-battery = "BT+ {device_battery_percentage}"; # 已连接设备且有电量信息
         format-no-controller = "BT?";     # 无蓝牙控制器
         on-click = "${pkgs.kitty}/bin/kitty bluetuith";
         # 更新间隔
         interval = 3;
-        
       };
 
       "tray" = {
@@ -151,7 +142,7 @@ in {
       "custom/battery-status" = {
         exec = "${app}/bin/waybar-battery-status";
         return-type = "json";
-        format = "{}";
+        format = "BAT {percentage}%";
         signal = 8;
         interval = 90;
       };

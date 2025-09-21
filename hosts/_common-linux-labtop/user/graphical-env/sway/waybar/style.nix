@@ -32,72 +32,14 @@
     }
   '';
 
-  general = ''
-    {
-      color: #f8f8f2;
-      background-color: rgba(68, 71, 90, 0.4);
-      border-radius: 4px;
-      margin: 1px;
-      padding: 0px 5px;
-    }
-  '';
-
-  great = ''
-    {
-      background-color: rgba(80, 250, 123, 0.3);
-      color: #50fa7b;
-    }
-  '';
-
-  good = ''
-    {
-      background-color: rgba(139, 233, 253, 0.3);
-      color: #8be9fd;
-    }
-  '';
-
-  normal = ''
-    {
-      color: #6272a4;
-      background-color: rgba(98, 114, 164, 0.2);
-    }
-  '';
-
-  warning = ''
-    {
-      color: #f1fa8c;
-      background-color: rgba(241, 250, 140, 0.2);
-    }
-  '';
-
-  critical = ''
-    {
-      color: #ff5555;
-      background-color: rgba(255, 85, 85, 0.2);
-    }
-  '';
-
-  inconspicuous = ''
-    {
-      color: #44475a;
-      background-color: rgba(68, 71, 90, 0.1);
-      opacity: 0.5;
-    }
-  '';
-
-  conspicuous = ''
-    mode {
-      background-color: rgba(255, 0, 255, 0.2);
-      color: #ff00ff;
-    }
-  '';
-
-  clockCss = ''
-    {
-      font-weight: 500;
-      padding: 0px 6px;
-    }
-  '';
+  general = builtins.readFile ./css/general.css;
+  great = builtins.readFile ./css/great.css;
+  good = builtins.readFile ./css/good.css;
+  normal = builtins.readFile ./css/normal.css;
+  warning = builtins.readFile ./css/warning.css;
+  critical = builtins.readFile ./css/critical.css;
+  inconspicuous = builtins.readFile ./css/inconspicuous.css;
+  conspicuous = builtins.readFile ./css/conspicuous.css;
 
   workspacesButton = ''
     #workspaces button {
@@ -119,16 +61,6 @@
       font-weight: bold;
       background-color: rgba(189, 147, 249, 0.5);
     }
-
-    #workspaces button.visible {
-      color: #50fa7b;
-      background-color: rgba(80, 250, 123, 0.2);
-    }
-
-    #workspaces button.urgent {
-      color: #ff5555;
-      background-color: rgba(255, 85, 85, 0.3);
-    }
   '';
 
   workspacesAndMode = ''
@@ -141,14 +73,12 @@
     }
   '';
 in {
-
-
   programs.waybar.style = 
       base 
     + tray 
     + workspacesButton 
     + workspacesAndMode 
-    + "#mode" 
+    + "#mode, #network.linked, #bluetooth.off" 
     + conspicuous 
 
     + "#memory, #cpu, #clock, #wireplumber, #custom-battery-status, #idle_inhibitor, #network, #bluetooth, #backlight, #tray" 
@@ -157,18 +87,18 @@ in {
     + "#memory.warning, #cpu.warning, #custom-battery-status.warning, #bluetooth.no-controller" 
     + warning 
 
-    + "#memory.critical, #cpu.critical, #custom-battery-status.critical" 
+    + "#memory.critical, #cpu.critical, #custom-battery-status.critical, #workspaces button.urgent" 
     + critical 
 
-    + "#custom-battery-status.charging, #network.wifi, #network.ethernet, #bluetooth.connected" 
+    + "#custom-battery-status.charging, #network.wifi, #network.ethernet, #bluetooth.connected, #bluetooth.connected-battery, #workspaces button.visible" 
     + great 
 
     + "#custom-battery-status.good, #idle_inhibitor.activated" 
     + good 
 
-    + "#wireplumber.muted, #network.disconnected, #bluetooth.off, #idle_inhibitor.deactivated"
+    + "#wireplumber.muted, #network.disconnected, #bluetooth.on, #idle_inhibitor.deactivated"
     + normal 
 
-    + "#bluetooth.disabled" 
+    + "#bluetooth.disabled, #network.disabled" 
     + inconspicuous;
 }

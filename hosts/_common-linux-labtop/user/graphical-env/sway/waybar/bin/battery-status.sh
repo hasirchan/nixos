@@ -44,6 +44,5 @@ else
     css_class="good"
 fi
 
-# 输出JSON格式
-printf '{"text":"%s %s%%","class":"%s","percentage":%d}\n' \
-        "$clean_state_text" "$percentage" "$css_class" "$percentage"
+printf '{"class":"%s","percentage":%d,"tooltip":"%s"}\n' \
+  "$css_class" "$percentage" "$clean_state_text"
