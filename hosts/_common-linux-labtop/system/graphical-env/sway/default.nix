@@ -42,11 +42,13 @@
       brightnessctl
       wiremix
       bluetuith
+      soteria
     ];
   };
 
   services.upower.enable = true;
   environment.etc."xterm".source = "${pkgs.kitty}/bin/kitty";
   security.rtkit.enable = true;
+  security.polkit.enable = true;
   services.udisks2.enable = true;
 }
