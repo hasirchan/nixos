@@ -80,7 +80,7 @@ in {
         interface = "w*";
         format-wifi = "{ifname} {signalStrength}%";
         format-linked = "{ifname}?";
-        format-disconnected = "{ifname}*";
+        format-disconnected = "{ifname}";
         format-disabled = "{ifname}-";
         tooltip-format-wifi = "SSID: {essid}\nIP: {ipaddr}";
         tooltip-format-disconnected = "Offline";
@@ -92,7 +92,7 @@ in {
         interface = "e*";
         format-ethernet = "{ifname}+";
         format-linked = "{ifname}?";
-        format-disconnected = "{ifname}*";
+        format-disconnected = "{ifname}";
         rfkill = false;
         tooltip-format-ethernet = "IP: {ipaddr}\n";
         tooltip-format-disconnected = "Offline";
@@ -102,10 +102,10 @@ in {
 
       "bluetooth" = {
         # 基本格式设置
-        format = "BT";                    
+        format = "BT*";                    
         format-disabled = "BT-";          # 控制器被禁用
         format-off = "BT!";               # 控制器关闭但未禁用
-        format-on = "BT*";                 # 开启状态，无连接设备
+        format-on = "BT";                 # 开启状态，无连接设备
         format-connected = "BT+";         # 开启状态，已连接设备
         format-connected-battery = "BT+ {device_battery_percentage}"; # 已连接设备且有电量信息
         format-no-controller = "BT?";     # 无蓝牙控制器
