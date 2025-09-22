@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... } : let
+{ config, lib, pkgs, osConfig, ... } : let
   wlKbptrActiveWin = pkgs.stdenv.mkDerivation rec {
     name = "wl-kbptr-sway-active-win";
 
@@ -19,16 +19,17 @@
       chmod +x $out/bin/wl-kbptr-sway-active-win
     '';
   };
+  hostName = osConfig.networking.hostName;
+  mod = config.wayland.windowManager.sway.config.modifier;
 in {
-  wayland.windowManager.sway.extraConfig = let
-    mod = config.wayland.windowManager.sway.config.modifier;
-  in ''
+  wayland.windowManager.sway.extraConfig = ''
     # For policykit agent
     exec ${pkgs.soteria}/bin/soteria
 
     # For screenshots
-    bindsym Print exec ${pkgs.grim}/bin/grim - | ${pkgs.coreutils}/bin/tee ~/Pictures/Screenshots/$(${pkgs.coreutils}/bin/date +'%Y-%m-%d_%H-%M-%S').png | ${pkgs.wl-clipboard}/bin/wl-copy
-    bindsym Shift+Print exec ${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - - | ${pkgs.coreutils}/bin/tee ~/Pictures/Screenshots/$(${pkgs.coreutils}/bin/date +'%Y-%m-%d_%H-%M-%S').png | ${pkgs.wl-clipboard}/bin/wl-copy
+
+    bindsym Print exec ${pkgs.grim}/bin/grim - | ${pkgs.coreutils}/bin/tee ~/Pictures/Screenshots/${hostName}_$(${pkgs.coreutils}/bin/date +'%Y-%m-%d_%H-%M-%S').png | ${pkgs.wl-clipboard}/bin/wl-copy
+    bindsym Shift+Print exec ${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - - | ${pkgs.coreutils}/bin/tee ~/Pictures/Screenshots/${hostName}_$(${pkgs.coreutils}/bin/date +'%Y-%m-%d_%H-%M-%S').png | ${pkgs.wl-clipboard}/bin/wl-copy
 
     # For volume control
     bindsym XF86AudioRaiseVolume exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
