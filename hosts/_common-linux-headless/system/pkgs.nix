@@ -14,6 +14,7 @@
     gettext
     # quickemu
     pass
+    unzip
  ];  
   programs.git.enable = true;
   # programs.vim.enable = true;
