@@ -55,9 +55,13 @@
       border: 1px solid rgba(189, 147, 249, 0.6);
       background-color: transparent;
       margin-right: 1px;
+      margin-left: 1px;
     }
     #workspaces button:last-child {
       margin-right: 0;
+    }
+    #workspaces button:first-child {
+      margin-left: 0;
     }
 
     #workspaces button:hover {
