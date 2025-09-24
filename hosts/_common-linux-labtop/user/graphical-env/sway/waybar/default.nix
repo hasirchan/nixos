@@ -29,9 +29,9 @@ in {
 
       "custom/menu" = {
         "format" = " ";
-        "on-click" = "${pkgs.wofi}/bin/wofi --show drun";
+        "on-click" = "${pkgs.wofi}/bin/wofi --show drun -W 16% -H 18%";
         "on-click-right" = ''
-          echo -e "Shutdown\nReboot" | ${pkgs.wofi}/bin/wofi --show dmenu | while read choice; do
+          echo -e "Shutdown\nReboot" | ${pkgs.wofi}/bin/wofi --show dmenu -W 6% -H 7% --hide-search | while read choice; do
             case "$choice" in
               "Shutdown") systemctl poweroff ;;
               "Reboot") systemctl reboot ;;
