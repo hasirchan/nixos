@@ -1,6 +1,6 @@
-{ config, lib, pkgs, ... } :
+{ config, lib, pkgs, pkgs-unfree, ... } :
 {
-  home.packages = with pkgs; [
+  home.packages = with pkgs-unfree; [
     aseprite
   ];
 }

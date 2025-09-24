@@ -2,7 +2,10 @@
   description = "NixOS flake";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    
+
+    # For linux-firmware-20250808
+    nixpkgs-df3b69d.url = "github:NixOS/nixpkgs/df3b69d77d402c988bbac4ecdc71861569140dda";
+
     daeuniverse.url = "github:daeuniverse/flake.nix";
 
     home-manager = {
@@ -26,9 +29,12 @@
     };
   };
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations.yeoz-nano = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.yeoz-nano = nixpkgs.lib.nixosSystem rec{
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = {
+        inherit inputs;
+        pkgs-df3b69d = import inputs.nixpkgs-df3b69d { inherit system; };
+      };
       modules = [
         ./hardware-configuration.nix
         ./hosts/yeoz-nano/system
@@ -37,7 +43,10 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.saya = import ./hosts/yeoz-nano/user;
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+            pkgs-unfree = import inputs.nixpkgs { inherit system; config.allowUnfree = true; };
+          };
         }
 
         inputs.daeuniverse.nixosModules.dae
