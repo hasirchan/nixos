@@ -23,10 +23,23 @@ in {
       height = 1;
       spacing = 5;
 
-      modules-left = [ "sway/workspaces" "sway/mode" "memory" "cpu" ];
+      modules-left = [ "custom/menu" "sway/workspaces" "sway/mode" "memory" "cpu" ];
       modules-center = [ "clock" ];
       modules-right = [ "idle_inhibitor" "wireplumber" ] ++ lib.optionals true ["backlight"] ++ [ "network#1" "network#2" "bluetooth" ] ++ lib.optionals true ["custom/battery-status"] ++ [ "tray" ];
 
+      "custom/menu" = {
+        "format" = " ";
+        "on-click" = "${pkgs.wofi}/bin/wofi --show drun";
+        "on-click-right" = ''
+          echo -e "Shutdown\nReboot" | ${pkgs.wofi}/bin/wofi --show dmenu | while read choice; do
+            case "$choice" in
+              "Shutdown") systemctl poweroff ;;
+              "Reboot") systemctl reboot ;;
+            esac
+          done
+        '';
+        "tooltip" = false;
+      };
       "sway/workspaces" = {
         format = "{name}";
         on-click = "activate";

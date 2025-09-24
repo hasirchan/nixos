@@ -77,26 +77,15 @@
     }
   '';
 
-  workspacesAndMode = ''
-    #workspaces,
-    #mode {
-      background-color: rgba(68, 71, 90, 0.4);
-      border-radius: 4px;
-      padding: 0px 3px;
-      margin: 1px;
-    }
-  '';
 in {
   programs.waybar.style = 
-      base 
+      base
+    + "#memory, #cpu, #clock, #wireplumber, #custom-battery-status, #idle_inhibitor, #network, #bluetooth, #backlight, #tray, #mode, #custom-menu" 
+    + general 
     + tray 
     + workspacesButton 
-    + workspacesAndMode 
     + "#mode, #network.linked, #bluetooth.off" 
     + conspicuous 
-
-    + "#memory, #cpu, #clock, #wireplumber, #custom-battery-status, #idle_inhibitor, #network, #bluetooth, #backlight, #tray" 
-    + general 
 
     + "#memory.warning, #cpu.warning, #custom-battery-status.warning, #bluetooth.no-controller" 
     + warning 
