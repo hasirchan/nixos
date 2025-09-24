@@ -9,10 +9,15 @@
     }
     window#waybar {
       color: #f8f8f2;
+      /*
       background-color: rgba(40, 42, 54, 0.85);
       border: 1px solid rgba(189, 147, 249, 0.6);
-      border-radius: 6px;
+      border-radius: 6px; 
       margin: 3px 10px 0px 10px;
+      */
+
+      background-color: transparent;
+      border: none
     }
   '';
 
@@ -47,6 +52,7 @@
       padding: 0px 5px;
       font-size: 12px;
       border-radius: 3px;
+      border: 1px solid rgba(189, 147, 249, 0.6);
       background-color: transparent;
     }
 
