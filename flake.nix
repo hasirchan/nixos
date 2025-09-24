@@ -29,7 +29,7 @@
     };
   };
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations.yeoz-nano = nixpkgs.lib.nixosSystem rec{
+    nixosConfigurations.yeoz-nano = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = {
         inherit inputs;
@@ -55,7 +55,7 @@
         { programs.nix-index-database.comma.enable = true; }
       ];
     };
-    nixosConfigurations.yeoz-zen = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.yeoz-zen = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
@@ -66,7 +66,10 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.saya = import ./hosts/yeoz-zen/user;
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+            pkgs-unfree = import inputs.nixpkgs { inherit system; config.allowUnfree = true; };
+          };
         }
 
         inputs.nix-index-database.nixosModules.nix-index

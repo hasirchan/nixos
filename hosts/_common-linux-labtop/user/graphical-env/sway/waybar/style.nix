@@ -53,9 +53,10 @@
       font-size: 12px;
       border-radius: 3px;
       border: 1px solid rgba(189, 147, 249, 0.6);
-      background-color: transparent;
+      background-color: rgba(40, 42, 54, 0.85);
       margin-right: 1px;
       margin-left: 1px;
+
     }
     #workspaces button:last-child {
       margin-right: 0;
