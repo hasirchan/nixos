@@ -3,9 +3,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # For linux-firmware-20250808
-    nixpkgs-df3b69d.url = "github:NixOS/nixpkgs/df3b69d77d402c988bbac4ecdc71861569140dda";
-
     daeuniverse.url = "github:daeuniverse/flake.nix";
 
     home-manager = {
@@ -33,7 +30,6 @@
       system = "x86_64-linux";
       specialArgs = {
         inherit inputs;
-        pkgs-df3b69d = import inputs.nixpkgs-df3b69d { inherit system; };
       };
       modules = [
         ./hardware-configuration.nix
