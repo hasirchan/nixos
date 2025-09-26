@@ -5,10 +5,11 @@
    ../../_common-linux-labtop/system
    ../../_common-linux-labtop/system/graphical-env/sway
    ./battery-charge-threshold.nix
+   ./nvidia.nix
   ];
 
   networking.hostName = "yeoz-zen"; 
-  boot.blacklistedKernelModules = ["nouveau" "nvidia"];
+
 
   environment.etc."wireplumber/wireplumber.conf.d/alsa-soft-mixer.conf".text = ''
     monitor.alsa.rules = [

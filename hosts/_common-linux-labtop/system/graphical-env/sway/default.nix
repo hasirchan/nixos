@@ -8,7 +8,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway --user-menu --user-menu-min-uid 1000";
+        command = lib.mkDefault "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway --user-menu --user-menu-min-uid 1000";
         user = "greeter";
       };
     };
