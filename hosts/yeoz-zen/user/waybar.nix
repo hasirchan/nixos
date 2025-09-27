@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }: let
-  great = builtins.readFile ../../_common-linux-labtop/user/graphical-env/sway/waybar/css/great.css;
-  warning = builtins.readFile ../../_common-linux-labtop/user/graphical-env/sway/waybar/css/warning.css;
-  critical = builtins.readFile ../../_common-linux-labtop/user/graphical-env/sway/waybar/css/critical.css;
-  general = builtins.readFile ../../_common-linux-labtop/user/graphical-env/sway/waybar/css/general.css;
+  great = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/great.css;
+  warning = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/warning.css;
+  critical = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/critical.css;
+  general = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/general.css;
 
   fanPolicyPath = "/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy";
   
@@ -46,29 +46,12 @@
     echo $new_mode | sudo tee ${fanPolicyPath} > /dev/null
     ${pkgs.procps}/bin/pkill -RTMIN+9 waybar
   '';
-
 in {
 
-  programs.waybar.settings = let
-    oldSettings = map (i: i // { }) (builtins.elemAt config.programs.waybar.settings 0);
-    old-modules-left = map (i: i // { }) (lib.attrsets.getAttrs [ "modules-left" ] oldSettings
-    newSettings = (oldSettings // {
-      modules-left = old-modules-left ++ [ "custom/fan-mode" ];
-      "custom/fan-mode" = { 
-        exec = getFanMode;
-        return-type = "json";
-        format = "Fan Mode: {text}";
-        signal = 9;
-        interval = "once";
-      };
-    });
-  in [ newSettings ];
-
-  programs.waybar.style =
-    config.programs.waybar.style
-    + "#custom-fan-mode" + general
+  programs.waybar.style = lib.mkAfter (
+    "#custom-fan-mode" + general
     + "#custom-fan-mode.normal" + warning
     + "#custom-fan-mode.silent" + great
-    + "#custom-fan-mode.overboost" + critical;
-
+    + "#custom-fan-mode.overboost" + critical
+  );
 }

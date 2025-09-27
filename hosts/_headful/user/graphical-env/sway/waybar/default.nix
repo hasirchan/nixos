@@ -17,7 +17,7 @@ in {
   wayland.windowManager.sway.config.bars = [{ command = "waybar"; }];
   programs.waybar = {
     enable = true;
-    settings = [({
+    settings = lib.mkDefault [({
       layer = "top";
       position = "top";
       height = 1;

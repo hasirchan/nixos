@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../../_common-linux-headless/user
-    ../../_common-linux-headless/user/syncthing.nix
+    ../../_headless/user
+    ../../_headless/user/syncthing.nix
     ./services.nix
     ./pkgs
   ];

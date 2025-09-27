@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ../../_common-linux-labtop/user
-    ../../_common-linux-labtop/user/graphical-env/sway
-    ../../_common-linux-labtop/user/pkgs/texlive.nix
-    ../../_common-linux-labtop/user/pkgs/anki.nix
-    ../../_common-linux-labtop/user/pkgs/aseprite.nix
+    ../../_headful/user
+    ../../_headful/user/graphical-env/sway
+    ../../_headful/user/pkgs/texlive.nix
+    ../../_headful/user/pkgs/anki.nix
+    ../../_headful/user/pkgs/aseprite.nix
   ];
 
   services.syncthing.settings = {

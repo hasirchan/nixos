@@ -2,8 +2,8 @@
 
 {
   imports = [
-   ../../_common-linux-labtop/system
-   ../../_common-linux-labtop/system/graphical-env/sway
+   ../../_headful/system
+   ../../_headful/system/graphical-env/sway
    ./battery-charge-threshold.nix
    ./nvidia.nix
   ];
