@@ -36,7 +36,7 @@ in {
       "custom/fan-mode" = {
         exec = getFanMode;
         return-type = "json";
-        format = "{text}";
+        format = "FAN {text}";
         signal = 9;
         interval = "once";
       };
