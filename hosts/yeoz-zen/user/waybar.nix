@@ -7,10 +7,10 @@
     #!/usr/bin/env bash
     get_mode_name() {
       case $1 in
-        0) echo "Normal" ;;
-        1) echo "Overboost" ;;
-        2) echo "Silent" ;;
-        *) echo "Unknown" ;;
+        0) echo ">>" ;;
+        1) echo ">>>" ;;
+        2) echo ">" ;;
+        *) echo "?" ;;
       esac
     }
 
@@ -36,7 +36,7 @@ in {
       "custom/fan-mode" = {
         exec = getFanMode;
         return-type = "json";
-        format = "FAN {text}";
+        format = "FAN{text}";
         signal = 9;
         interval = "once";
       };
