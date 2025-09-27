@@ -52,6 +52,7 @@ in {
     format = "{:%a, %d.%m.%Y | %H:%M:%S}";
     interval = 1;
     on-click = "${pkgs.kitty}/bin/kitty calcurse";
+    tooltip = false;
   };
 
   "wireplumber" = {
