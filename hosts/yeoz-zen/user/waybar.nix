@@ -29,7 +29,7 @@ in {
       "custom/fan-mode" = {
         exec = getFanMode;
         return-type = "json";
-        format = "FAN {text}";
+        format = "FAN{text}";
         signal = 9;
         interval = "once";
         tooltip = "{tooltip}";
