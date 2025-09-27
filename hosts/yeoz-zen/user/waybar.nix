@@ -24,22 +24,7 @@
     output_json
   '';
 
-  changeFanMode = pkgs.writeShellScript "change-fan-mode" ''
-    #!/usr/bin/env bash
-    current_mode=$(cat ${fanPolicyPath} 2>/dev/null || echo "0")
-    
-    case $current_mode in
-      0) new_mode=1 ;;  # Normal -> Overboost
-      1) new_mode=2 ;;  # Overboost -> Silent
-      2) new_mode=0 ;;  # Silent -> Normal
-      *) new_mode=0 ;;  # Unknown -> Normal
-    esac
-    
-    echo $new_mode | sudo tee ${fanPolicyPath} > /dev/null
-    ${pkgs.procps}/bin/pkill -RTMIN+9 waybar
-  '';
-
-  defaultSettings = import ../../_headful/user/graphical-env/sway/waybar/settings.nix { inherit lib pkgs;};
+  defaultSettings = import ../../_headful/user/graphical-env/sway/waybar/settings.nix { inherit lib pkgs; };
 in {
   imports = [
     ./reminder.nix
