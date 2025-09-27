@@ -1,11 +1,8 @@
 { config, lib, pkgs, ... }: let
-  great = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/great.css;
-  warning = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/warning.css;
-  critical = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/critical.css;
-  general = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/general.css;
 
   fanPolicyPath = "/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy";
-  
+
+  general = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/general.css;  
   getFanMode = pkgs.writeShellScript "get-fan-mode" ''
     #!/usr/bin/env bash
     get_mode_name() {
@@ -25,11 +22,6 @@
 
     # Output initial state
     output_json
-
-    # Monitor file changes with inotify
-    ${pkgs.inotify-tools}/bin/inotifywait -m -e modify ${fanPolicyPath} 2>/dev/null | while read; do
-      output_json
-    done
   '';
 
   changeFanMode = pkgs.writeShellScript "change-fan-mode" ''
@@ -46,12 +38,30 @@
     echo $new_mode | sudo tee ${fanPolicyPath} > /dev/null
     ${pkgs.procps}/bin/pkill -RTMIN+9 waybar
   '';
+
+  defaultSettings = import ../../_headful/user/graphical-env/sway/waybar/settings.nix { inherit lib pkgs;};
 in {
+  imports = [
+    ./reminder.nix
+  ];
+  programs.waybar.settings = let 
+    finalSettings = defaultSettings // {
+      modules-left = defaultSettings.modules-left ++ ["custom/fan-mode"];
+
+      "custom/fan-mode" = {
+        exec = getFanMode;
+        return-type = "json";
+        format = "Fan Mode: {text}";
+        signal = 9;
+        interval = "once";
+      };
+    };
+  in [
+    finalSettings
+  ];
 
   programs.waybar.style = lib.mkAfter (
     "#custom-fan-mode" + general
-    + "#custom-fan-mode.normal" + warning
-    + "#custom-fan-mode.silent" + great
-    + "#custom-fan-mode.overboost" + critical
   );
 }
+
