@@ -45,17 +45,29 @@
 */
   services.greetd.settings.default_session.command = lib.mkIf config.services.greetd.enable (
     let
-      swayIntel = pkgs.writeShellScript "sway-intel" ''
-        INTEL_CARD=$(for card in /dev/dri/card*; do 
-          if [ "$(cat /sys/class/drm/$(basename $card)/device/vendor 2>/dev/null)" = "0x8086" ]; then 
-            echo $card
-            break
-          fi
-        done)
-        WLR_DRM_DEVICES="$INTEL_CARD" exec sway
-      '';
+      sway-launcher = pkgs.writeShellScript "sway-launcher" ''
+        GPU_MUX_MODE=$(cat /sys/devices/platform/asus-nb-wmi/gpu_mux_mode 2>/dev/null)
+
+        case "$GPU_MUX_MODE" in
+          1)
+            INTEL_CARD=$(for card in /dev/dri/card*; do 
+              if [ "$(cat /sys/class/drm/$(basename $card)/device/vendor 2>/dev/null)" = "0x8086" ]; then 
+                echo $card
+                break
+              fi
+            done)
+            WLR_DRM_DEVICES="$INTEL_CARD" exec sway
+            ;;
+          0)
+            exec sway --unsupported-gpu
+            ;;
+          *)
+            exit 0
+            ;;
+        esac
+      '';  
     in
-      "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${swayIntel} --user-menu --user-menu-min-uid 1000"
+      "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${sway-launcher} --user-menu --user-menu-min-uid 1000"
   );
 
   services.xserver.videoDrivers = [ "modesetting" "nvidia"];
