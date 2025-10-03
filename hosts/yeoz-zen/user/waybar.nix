@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: let
+{ config, lib, pkgs, isLabtop, ... }: let
 
   fanPolicyPath = "/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy";
 
@@ -17,7 +17,7 @@
 
     output_json
   '';
-  defaultSettings = import ../../_headful/user/graphical-env/sway/waybar/settings.nix { inherit lib pkgs; };
+  defaultSettings = import ../../_headful/user/graphical-env/sway/waybar/settings.nix { inherit lib pkgs isLabtop; };
 in {
   imports = [
     ./reminder.nix

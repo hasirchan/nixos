@@ -1,4 +1,4 @@
-{ lib, pkgs } : let 
+{ lib, pkgs, isLabtop } : let 
   app = pkgs.symlinkJoin {
     name = "scripts";
     paths = with pkgs; [
