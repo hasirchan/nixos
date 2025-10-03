@@ -9,6 +9,8 @@
     ../../_headful/user/pkgs/aseprite.nix
   ];
 
+  services.mySyncthing.enable = true;
+
   services.syncthing.settings = {
     devices."yeoz-zen" = {
       id = "3ZNFOFZ-SUTO3XO-EFIDA5P-4FQ36UP-I26CARI-WDMXJBE-BCTH7WU-C5QGMQK"; 
