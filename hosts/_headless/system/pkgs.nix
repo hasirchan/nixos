@@ -16,7 +16,9 @@
     pass
     unzip
     pciutils
+    picocom
  ];  
   programs.git.enable = true;
+  programs.screen.enable = true;
   # programs.vim.enable = true;
 }

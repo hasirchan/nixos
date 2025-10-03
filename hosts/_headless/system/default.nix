@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... } :
+{ config, lib, pkgs, system, ... } :
 {
   imports = [
     ./user-defined.nix
@@ -10,11 +10,16 @@
 
   time.timeZone = "Asia/Singapore";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernel.sysctl."kernel.sysrq" = 1;
+ 
+  boot.loader = if builtins.match ".*aarch64-linux.*" system != null then {
+    grub.enable = false;
+    generic-extlinux-compatible.enable = true;
+  } else {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
+  boot.kernel.sysctl."kernel.sysrq" = 1;
   networking.networkmanager.enable = true;
 
   i18n.defaultLocale = "en_US.UTF-8";

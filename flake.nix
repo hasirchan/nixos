@@ -29,7 +29,7 @@
     nixosConfigurations.yeoz-nano = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs;
+        inherit inputs system;
       };
       modules = [
         ./hardware-configuration.nix
@@ -53,7 +53,7 @@
     };
     nixosConfigurations.yeoz-zen = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs system; };
       modules = [
         ./hardware-configuration.nix
         ./hosts/yeoz-zen/system
@@ -62,6 +62,30 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.saya = import ./hosts/yeoz-zen/user;
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+            pkgs-unfree = import inputs.nixpkgs { inherit system; config.allowUnfree = true; };
+          };
+        }
+
+        inputs.nix-index-database.nixosModules.nix-index
+        { programs.nix-index-database.comma.enable = true; }
+        inputs.daeuniverse.nixosModules.dae
+        inputs.daeuniverse.nixosModules.daed
+      ];
+    };
+    nixosConfigurations.yeoz-pi = nixpkgs.lib.nixosSystem rec {
+      system = "aarch64-linux";
+      specialArgs = { inherit inputs system; };
+      modules = [
+        ./hardware-configuration.nix
+        ./hosts/yeoz-pi/system
+
+        
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.saya = import ./hosts/yeoz-pi/user;
           home-manager.extraSpecialArgs = {
             inherit inputs;
             pkgs-unfree = import inputs.nixpkgs { inherit system; config.allowUnfree = true; };
