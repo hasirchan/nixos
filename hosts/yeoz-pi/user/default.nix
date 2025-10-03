@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
+
 {
   imports = [
-    ../../_headless/user/default.nix
+    ../../_headful/user
+    ../../_headful/user/graphical-env/sway
   ];
 }
