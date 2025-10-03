@@ -30,6 +30,7 @@
       system = "x86_64-linux";
       specialArgs = {
         inherit inputs system;
+        usingOfficialRaspiImg = false;
       };
       modules = [
         ./hosts/yeoz-nano/system
@@ -55,6 +56,7 @@
       system = "x86_64-linux";
       specialArgs = { 
         inherit inputs system;
+        usingOfficialRaspiImg = false;
       };
       modules = [
         ./hosts/yeoz-zen/system
