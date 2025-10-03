@@ -16,7 +16,7 @@ in {
 
   modules-left = [ "custom/menu" "sway/workspaces" "sway/mode" "memory" "cpu" ];
   modules-center = [ "clock" ];
-  modules-right = [ "idle_inhibitor" "wireplumber" ] ++ lib.optionals true ["backlight"] ++ [ "network#1" "network#2" "bluetooth" ] ++ lib.optionals true ["custom/battery-status"] ++ [ "tray" ];
+  modules-right = [ "idle_inhibitor" "wireplumber" ] ++ lib.optionals isLabtop ["backlight"] ++ [ "network#1" "network#2" "bluetooth" ] ++ lib.optionals true ["custom/battery-status"] ++ [ "tray" ];
 
   "custom/menu" = {
     "format" = " ";
@@ -131,7 +131,7 @@ in {
       deactivated = "SLP";
     };
   };
-} // lib.attrsets.optionalAttrs (true) {
+} // lib.attrsets.optionalAttrs (isLabtop) {
   "backlight" = let 
     brightnessPlus = "${pkgs.brightnessctl}/bin/brightnessctl set +5%";
     brightnessMinus = "${pkgs.bash}/bin/bash -c 'current=$(${pkgs.brightnessctl}/bin/brightnessctl get); max=$(${pkgs.brightnessctl}/bin/brightnessctl max); if [ $((current * 100 / max - 5)) -lt 1 ]; then ${pkgs.brightnessctl}/bin/brightnessctl set 1%; else ${pkgs.brightnessctl}/bin/brightnessctl set 5%-; fi'";

@@ -42,6 +42,7 @@
           home-manager.extraSpecialArgs = {
             inherit inputs;
             pkgs-unfree = import inputs.nixpkgs { inherit system; config.allowUnfree = true; };
+            isLabtop = true;
           };
         }
 
@@ -53,7 +54,9 @@
     };
     nixosConfigurations.yeoz-zen = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs system; };
+      specialArgs = { 
+        inherit inputs system;
+      };
       modules = [
         ./hardware-configuration.nix
         ./hosts/yeoz-zen/system
@@ -65,6 +68,7 @@
           home-manager.extraSpecialArgs = {
             inherit inputs;
             pkgs-unfree = import inputs.nixpkgs { inherit system; config.allowUnfree = true; };
+            isLabtop = true;
           };
         }
 
@@ -76,7 +80,9 @@
     };
     nixosConfigurations.yeoz-pi = nixpkgs.lib.nixosSystem rec {
       system = "aarch64-linux";
-      specialArgs = { inherit inputs system; };
+      specialArgs = {
+        inherit inputs system;
+      };
       modules = [
         ./hardware-configuration.nix
         ./hosts/yeoz-pi/system
@@ -89,6 +95,7 @@
           home-manager.extraSpecialArgs = {
             inherit inputs;
             pkgs-unfree = import inputs.nixpkgs { inherit system; config.allowUnfree = true; };
+            isLabtop = false;
           };
         }
 

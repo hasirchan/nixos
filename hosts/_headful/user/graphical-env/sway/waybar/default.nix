@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, isLabtop, ... }:
 {
 
   imports = [
@@ -10,7 +10,7 @@
   programs.waybar = {
     enable = true;
     settings = lib.mkDefault [
-      (import ./settings.nix { inherit lib pkgs; })
+      (import ./settings.nix { inherit lib pkgs isLabtop; })
     ];
 
   };
