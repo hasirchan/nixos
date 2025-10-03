@@ -1,4 +1,4 @@
-{ config, lib, pkgs, system, ... } :
+{ config, lib, pkgs, usingOfficialRaspiImg, ... } :
 {
   imports = [
     ./user-defined.nix
@@ -11,7 +11,7 @@
   time.timeZone = "Asia/Singapore";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
  
-  boot.loader = if builtins.match ".*aarch64-linux.*" system != null then {
+  boot.loader = if usingOfficialRaspiImg then {
     grub.enable = false;
     generic-extlinux-compatible.enable = true;
   } else {

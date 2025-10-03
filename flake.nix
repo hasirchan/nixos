@@ -32,7 +32,6 @@
         inherit inputs system;
       };
       modules = [
-        ./hardware-configuration.nix
         ./hosts/yeoz-nano/system
 
         home-manager.nixosModules.home-manager {
@@ -58,7 +57,6 @@
         inherit inputs system;
       };
       modules = [
-        ./hardware-configuration.nix
         ./hosts/yeoz-zen/system
 
         home-manager.nixosModules.home-manager {
@@ -82,11 +80,10 @@
       system = "aarch64-linux";
       specialArgs = {
         inherit inputs system;
+        usingOfficialRaspiImg = true;
       };
       modules = [
-        ./hardware-configuration.nix
         ./hosts/yeoz-pi/system
-
         
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;

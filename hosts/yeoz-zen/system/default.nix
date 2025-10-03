@@ -2,10 +2,11 @@
 
 {
   imports = [
-   ../../_headful/system
-   ../../_headful/system/graphical-env/sway
-   ./battery-charge-threshold.nix
-   ./nvidia.nix
+    ./hardware-configuration.nix
+    ../../_headful/system
+    ../../_headful/system/graphical-env/sway
+    ./battery-charge-threshold.nix
+    ./nvidia.nix
   ];
 
   networking.hostName = "yeoz-zen"; 
