@@ -4,5 +4,6 @@
   imports = [
     ../../_headful/user
     ../../_headful/user/graphical-env/sway
+    ./firefox.nix
   ];
 }
