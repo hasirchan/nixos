@@ -7,8 +7,6 @@
   ];
   home.packages = with pkgs; [
     vlc
-    # aseprite
     nerd-fonts.meslo-lg
-    localsend
   ];
 }

@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  services.kdeconnect.enable = true;
+  #services.kdeconnect.enable = true;
 }
