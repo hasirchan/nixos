@@ -6,7 +6,7 @@
     ../../_headful/user/graphical-env/sway
     ../../_headful/user/pkgs/texlive.nix
     ../../_headful/user/pkgs/anki.nix
-    ../../_headful/user/pkgs/aseprite.nix
+    #../../_headful/user/pkgs/aseprite.nix
   ];
 
   services.mySyncthing.enable = true;
