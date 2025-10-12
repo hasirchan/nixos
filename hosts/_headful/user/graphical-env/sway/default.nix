@@ -66,6 +66,12 @@
         };
       };
 
+    seat = lib.mkDefault {
+      "*" = {
+        xcursor_theme = "Adwaita 24";
+      };
+    };
+
       window = {
         border = 1;
         hideEdgeBorders = "none";
