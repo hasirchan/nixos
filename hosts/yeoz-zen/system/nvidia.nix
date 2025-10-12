@@ -43,11 +43,11 @@
 ⡳⣕⢯⡺⡵⣝⢼⡸⣕⢵⡣⡳⣕⢧⡳⡝⡞⣎⢧⡳⡕⡧⣫⢮⢳⢝⢮⣪⡳⣹⡹⣜⢵⢝⢮⡣⡯⣪⡳⣝⢼⣚⢮⡺⣕⢯⢮⢳⢝⣎⢗⡽⣜⢮⡪⡿⣿⣾⡿⣿⣿⣽⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣿⣯⣟⢌⢊⠌⢌⢊⠢⡊⠌⢌⢪⢐⢕⢵⣿⣿⢿⣽⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣿⣻⡿⣿⣿⣿⣿⣿⣿⣿⢿⡽⣎⢗⡝⡮⡺⡜⡮⡺⣪⡣⣏⢞⡎⣗⡳⣹⡹⣜⣕⢯⢳
 ⣞⢮⡳⣝⢮⢮⡣⣏⢮⡣⡯⣝⢼⡪⡮⡳⡝⣎⢧⡳⡝⡞⡮⢮⡳⡝⡮⡲⣝⢮⢺⡪⣳⡹⣕⣝⢮⢳⡹⡼⡕⣗⡳⣝⢮⢳⡹⣕⢯⣪⡳⣝⣜⢮⢮⡳⣕⢇⠫⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣾⣿⣽⡷⡑⠔⡌⡆⡅⠕⢌⠌⡂⡇⡕⢜⢜⣾⣿⣟⣯⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⡿⣿⣿⣿⣿⣽⡷⣟⣿⣺⡯⣟⣿⣽⣾⣿⡿⣯⡺⡜⣎⢧⡫⣎⢗⡕⡧⡳⡣⣏⢮⢮⣣⡳⡵⢵⡹⣕
 */
+
   services.greetd.settings.default_session.command = lib.mkIf config.services.greetd.enable (
     let
       sway-launcher = pkgs.writeShellScript "sway-launcher" ''
         GPU_MUX_MODE=$(cat /sys/devices/platform/asus-nb-wmi/gpu_mux_mode 2>/dev/null)
-
         case "$GPU_MUX_MODE" in
           1)
             INTEL_CARD=$(for card in /dev/dri/card*; do 
@@ -56,10 +56,10 @@
                 break
               fi
             done)
-            WLR_DRM_DEVICES="$INTEL_CARD" exec sway
+            WLR_DRM_DEVICES="$INTEL_CARD" exec systemd-run --user --scope --unit=sway sway
             ;;
           0)
-            exec sway --unsupported-gpu
+            exec systemd-run --user --scope --unit=sway sway --unsupported-gpu
             ;;
           *)
             exit 0
