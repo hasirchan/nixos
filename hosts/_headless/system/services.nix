@@ -11,5 +11,4 @@
   services.daed = {
     enable = true;
   };
-  #services.flatpak.enable = true;
 }

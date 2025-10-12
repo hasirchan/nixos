@@ -7,5 +7,6 @@
     ./pipewire.nix
     ./kmonad
     ./pkgs.nix
+    ./flatpak.nix
   ];
 }
