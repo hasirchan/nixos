@@ -2,16 +2,20 @@
 
   fanPolicyPath = "/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy";
 
-  general = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/general.css;  
+  general = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/general.css;
+  warning = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/warning.css;
+  critical = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/critical.css;
+  conspicuous = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/conspicuous.css;
+  good = builtins.readFile ../../_headful/user/graphical-env/sway/waybar/css/good.css;
 
   getFanMode = pkgs.writeShellScript "get-fan-mode" ''
     #!/usr/bin/env bash
     output_json() {
       case $(cat ${fanPolicyPath} 2>/dev/null || echo "0") in
-        0) echo '{"text":"+","tooltip":"Normal"}' ;;
-        1) echo '{"text":"*","tooltip":"Overboost"}' ;;
-        2) echo '{"text":"-","tooltip":"Silent"}' ;;
-        *) echo '{"text":"?","tooltip":"Unknown"}' ;;
+        0) echo '{"class":"normal","tooltip":"Normal"}' ;;
+        1) echo '{"class":"overboost","tooltip":"Overboost"}' ;;
+        2) echo '{"class":"silent","tooltip":"Silent"}' ;;
+        *) echo '{"class":"unknown","tooltip":"Unknown"}' ;;
       esac
     }
 
@@ -29,7 +33,7 @@ in {
       "custom/fan-mode" = {
         exec = getFanMode;
         return-type = "json";
-        format = "FAN{text}";
+        format = "FAN";
         signal = 9;
         interval = "once";
         tooltip = "{tooltip}";
@@ -40,7 +44,7 @@ in {
   ];
 
   programs.waybar.style = lib.mkAfter (
-    "#custom-fan-mode" + general
+    "#custom-fan-mode" + general + "#custom-fan-mode.normal" + warning + "#custom-fan-mode.overboost" + critical + "#custom-fan-mode.silent" + good + "custom-fan-mode.unknown" + conspicuous
   );
 }
 
