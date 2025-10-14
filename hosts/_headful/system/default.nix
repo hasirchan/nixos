@@ -6,6 +6,6 @@
     ./bluetooth.nix
     ./pipewire.nix
     ./kmonad
-    ./pkgs.nix
+    #./pkgs.nix
   ];
 }
