@@ -8,6 +8,9 @@
     ./overlays
   ];
 
-  networking.hostName = "yeoz-nano"; 
+  networking.hostName = "yeoz-nano";
+
+  users.users.saya.extraGroups = [ "dialout" ];
+
 }
 
