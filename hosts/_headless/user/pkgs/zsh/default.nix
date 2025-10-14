@@ -31,7 +31,7 @@
 
     initContent = ''
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      if [[ "$TERM" == "linux" || -n $SSH_CONNECTION || "$TERM" == "vscode" ]]; then
+      if [[ "$TERM" == "linux" || -n $SSH_CONNECTION || "$TERM_PROGRAM" == "vscode" ]]; then
         source ~/.p10k-tty.zsh
       else
         source ~/.p10k.zsh
