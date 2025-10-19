@@ -40,6 +40,10 @@
     enable = true;
   };
 
+  programs.zsh.initContent = lib.mkIf config.programs.zsh.enable (lib.mkAfter ''
+    alias ssh="kitty +kitten ssh"
+  '');
+
   services.gnome-keyring.enable = true;  
 
   wayland.windowManager.sway = {
