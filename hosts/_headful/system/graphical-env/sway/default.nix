@@ -16,7 +16,7 @@
 
   programs.sway = let 
     kittyAsXterm = pkgs.stdenv.mkDerivation {
-      name = "kitty-xterm";
+      name = "kitty-as-xterm";
       buildInputs = [ pkgs.kitty ];
       dontUnpack = true;
       installPhase = ''
