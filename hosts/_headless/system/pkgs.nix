@@ -11,7 +11,7 @@
     tree
     lsof
     inotify-tools
-    nix-your-shell
+    # nix-your-shell
     p7zip
     aria2
     unar
