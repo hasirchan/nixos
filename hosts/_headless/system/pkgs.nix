@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./bash.nix
+    ./git.nix
+  ];
   programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
     wget
@@ -19,10 +23,6 @@
     pciutils
     picocom
   ];  
-  programs.git.enable = true;
-  programs.screen.enable = true;
-  # programs.vim.enable = true;
-    
   environment.variables = {
     EDITOR = "nvim";
     VISUAL = "nvim";

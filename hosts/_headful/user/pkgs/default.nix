@@ -8,5 +8,6 @@
   home.packages = with pkgs; [
     vlc
     nerd-fonts.meslo-lg
+    mysql-workbench
   ];
 }
