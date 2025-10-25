@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-
   programs.nix-ld.enable = true;
   environment.systemPackages = with pkgs; [
     wget
@@ -19,16 +18,16 @@
     unzip
     pciutils
     picocom
- ];  
+  ];  
   programs.git.enable = true;
   programs.screen.enable = true;
   # programs.vim.enable = true;
-
-  
+    
   environment.variables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
 
   /*
