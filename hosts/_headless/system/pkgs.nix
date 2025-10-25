@@ -6,6 +6,10 @@
     ./git.nix
   ];
   programs.nix-ld.enable = true;
+  programs.direnv = {
+    enable = true;
+
+  };
   environment.systemPackages = with pkgs; [
     wget
     tree
@@ -21,7 +25,6 @@
     pass
     unzip
     pciutils
-    picocom
   ];  
   environment.variables = {
     EDITOR = "nvim";
