@@ -6,6 +6,8 @@
     ../../_headful/user/graphical-env/sway
     ../../_headful/user/pkgs/texlive.nix
     ../../_headful/user/pkgs/default.nix
+    ../../_headful/user/pkgs/vscode.nix
+
     # ../../_headful/user/pkgs/aseprite.nix
 
     ./sway.nix
