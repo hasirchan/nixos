@@ -7,7 +7,6 @@
     ./pkgs
   ];
 
-  /*
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
@@ -29,5 +28,4 @@
     "Groups/0/Items/1".Name = "shuangpin";
     "Groups/0/Items/2".Name = "mozc";
   };
-  */
 }
