@@ -7,6 +7,7 @@
     ./pkgs
   ];
 
+  /*
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
@@ -15,6 +16,7 @@
       fcitx5-mozc
     ];
   };
+  
 
   i18n.inputMethod.fcitx5.settings.inputMethod = {
     GroupOrder."0" = "Default";
@@ -27,4 +29,5 @@
     "Groups/0/Items/1".Name = "shuangpin";
     "Groups/0/Items/2".Name = "mozc";
   };
+  */
 }
