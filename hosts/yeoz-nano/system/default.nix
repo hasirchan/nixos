@@ -7,6 +7,8 @@
     ../../_headful/system/graphical-env/sway
     ./overlays
   ];
+  
+  services.daed.enable = true;
 
   networking.hostName = "yeoz-nano";
 
