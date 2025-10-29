@@ -8,7 +8,4 @@
     AllowHybridSleep=no
     AllowSuspendThenHibernate=no
   '';
-  services.daed = lib.mkDefault {
-    enable = true;
-  };
 }
