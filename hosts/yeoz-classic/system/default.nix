@@ -7,6 +7,4 @@
   ];
 
   networking.hostName = "yeoz-classic";
-
-  services.daed.enable = false;
 }
