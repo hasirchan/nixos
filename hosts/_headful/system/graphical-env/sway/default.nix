@@ -14,6 +14,10 @@
     };
   };
 
+  programs.bash.interactiveShellInit = lib.mkIf config.programs.bash.enable (lib.mkAfter ''
+    [[ "$TERM" == "xterm-kitty" ]] && alias ssh="TERM=xterm-256color ssh"
+  '');
+
   programs.sway = let 
     kittyAsXterm = pkgs.stdenv.mkDerivation {
       name = "kitty-as-xterm";

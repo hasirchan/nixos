@@ -41,7 +41,7 @@
   };
 
   programs.zsh.initContent = lib.mkIf config.programs.zsh.enable (lib.mkAfter ''
-    alias ssh="kitty +kitten ssh"
+    [[ "$TERM" == "xterm-kitty" ]] && alias ssh="TERM=xterm-256color ssh"
   '');
 
   services.gnome-keyring.enable = true;  
