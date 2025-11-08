@@ -11,7 +11,7 @@
     # ../../_headful/user/pkgs/aseprite.nix
 
     ./sway.nix
-    ./waybar.nix
+    # ./waybar.nix
   ];
 
   services.mySyncthing.enable = true;
