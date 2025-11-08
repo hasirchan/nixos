@@ -1,9 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    #./i3status-reminder.nix
-  ];
   services.greetd = {
     enable = true;
     settings = {
