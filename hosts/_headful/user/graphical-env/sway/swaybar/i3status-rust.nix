@@ -27,7 +27,7 @@
 
           {
             block = "sound";
-            format = " VOL {$volume} ";
+            format = " VOL $volume ";
             format_alt = " $output_name {$volume} ";
             driver = "auto";
             step_width = 5;
