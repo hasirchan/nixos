@@ -86,6 +86,7 @@
         titlebar = false;
       };
       
+      /*
       colors = {
         background = "#282a36";
         
@@ -129,6 +130,7 @@
           text = "#6272a4";
         };
       };
+      */
     };
     
     checkConfig = false;

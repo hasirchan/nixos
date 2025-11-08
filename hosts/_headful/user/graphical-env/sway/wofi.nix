@@ -3,6 +3,7 @@
 {
   programs.wofi = {
     enable = true;
+    /*
     style = ''
       window {
         margin: 0px;
@@ -56,5 +57,7 @@
         font-weight: bold;
       }
     '';
+    */
   };
+
 }
