@@ -4,8 +4,8 @@
     ./swayidle.nix
     ./wofi.nix
 
-    ./waybar
-    #./swaybar
+    #./waybar
+    ./swaybar
     ./mako.nix
     ./sway-extra-config.nix
   ];
