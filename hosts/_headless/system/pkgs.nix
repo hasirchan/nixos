@@ -20,6 +20,7 @@
     aria2
     unar
     just
+    jq
     gettext
     # quickemu
     pass
