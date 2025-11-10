@@ -35,7 +35,7 @@
 
           {
             block = "backlight";
-            format = "BRT $brightness";
+            format = "BRT $brightness ";
             missing_format = "";
             step_width = 5;
             minimum = 1;
@@ -44,8 +44,8 @@
           {
             block = "net";
             device = "^w.*";
-            format = " $device $ip ";
-            format_alt = " $device $ip $ipv6 ";
+            format = " $device {$ip|N/A} ";
+            format_alt = " $device {$ip|N/A} {$ipv6|N/A} ";
             inactive_format = " $device ";
             missing_format = "";
             interval = 1;
@@ -54,8 +54,8 @@
           {
             block = "net";
             device = "^e.*";
-            format = " $device $ip ";
-            format_alt = " $device $ip $ipv6 ";
+            format = " $device {$ip|N/A} ";
+            format_alt = " $device {$ip|N/A} {$ipv6|N/A} ";
             inactive_format = " $device ";
             missing_format = "";
             interval = 1;
