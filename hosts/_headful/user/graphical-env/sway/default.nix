@@ -53,7 +53,7 @@
     config = rec {
       modifier = "Mod4";
       terminal = "kitty";
-      menu = "wofi --show drun -W 16% -H 18%";
+      menu = "rofi -show drun";
       defaultWorkspace = "workspace number 1";
       input = {
         "type:touchpad" = {

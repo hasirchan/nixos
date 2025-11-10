@@ -35,7 +35,7 @@
 
           {
             block = "backlight";
-            format = "BRT $brightness ";
+            format = " BRT $brightness ";
             missing_format = "";
             step_width = 5;
             minimum = 1;

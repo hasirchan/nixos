@@ -36,7 +36,7 @@
       wl-clipboard
       mako
       kitty
-      wofi
+      rofi
       swaylock
       swayidle
       swaybg
