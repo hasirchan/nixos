@@ -3,8 +3,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    daeuniverse.url = "github:daeuniverse/flake.nix";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,8 +44,6 @@
           };
         }
 
-        inputs.daeuniverse.nixosModules.dae
-        inputs.daeuniverse.nixosModules.daed
         inputs.nix-index-database.nixosModules.nix-index
         { programs.nix-index-database.comma.enable = true; }
       ];
@@ -74,8 +70,6 @@
 
         inputs.nix-index-database.nixosModules.nix-index
         { programs.nix-index-database.comma.enable = true; }
-        inputs.daeuniverse.nixosModules.dae
-        inputs.daeuniverse.nixosModules.daed
       ];
     };
     nixosConfigurations.yeoz-pi = nixpkgs.lib.nixosSystem rec {
@@ -100,8 +94,6 @@
 
         inputs.nix-index-database.nixosModules.nix-index
         { programs.nix-index-database.comma.enable = true; }
-        inputs.daeuniverse.nixosModules.dae
-        inputs.daeuniverse.nixosModules.daed
       ];
     };
 
@@ -125,8 +117,6 @@
           };
         }
 
-        inputs.daeuniverse.nixosModules.dae
-        inputs.daeuniverse.nixosModules.daed
         inputs.nix-index-database.nixosModules.nix-index
         { programs.nix-index-database.comma.enable = true; }
       ];

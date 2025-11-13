@@ -11,8 +11,6 @@
 
   networking.hostName = "yeoz-zen"; 
 
-  services.daed.enable = true;
-
   environment.etc."wireplumber/wireplumber.conf.d/alsa-soft-mixer.conf".text = ''
     monitor.alsa.rules = [
       {
