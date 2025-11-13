@@ -15,8 +15,8 @@
           GIT_PS1_SHOWCONFLICTSTATE=yes \
           GIT_PS1_DESCRIBE_STYLE=default \
           GIT_PS1_SHOWCOLORHINTS=1 \
-          __git_ps1 '(%s)'
-        ) \\$ "
+          __git_ps1 '(%s) '
+        )\\$ "
       fi
     '';
   };
