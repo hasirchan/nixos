@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
+  
+  imports = [
+    ./dae.nix
+  ];
+
   services.openssh.enable = true;
   systemd.sleep.extraConfig = ''
     AllowSuspend=no
