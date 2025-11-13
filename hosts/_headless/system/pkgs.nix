@@ -26,6 +26,7 @@
     pass
     unzip
     pciutils
+    git-crypt
   ];  
   environment.variables = {
     EDITOR = "nvim";
