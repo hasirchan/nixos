@@ -1,1 +1,2 @@
-hosts/_headless/system/dae.nix filter=git-crypt diff=git-crypt
+hosts/_headless/system/mihomo/mihomo.yaml filter=git-crypt diff=git-crypt
+

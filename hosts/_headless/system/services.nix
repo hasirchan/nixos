@@ -3,7 +3,7 @@
 {
   
   imports = [
-    ./dae.nix
+    ./mihomo
   ];
 
   services.openssh.enable = true;
