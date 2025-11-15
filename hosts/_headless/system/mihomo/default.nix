@@ -9,6 +9,6 @@
   services.mihomo = {
     enable = true;
     tunMode = true;
-    configFile =  toString ./mihomo.yaml;
+    configFile = toString ./mihomo.yaml;
   };
 }
