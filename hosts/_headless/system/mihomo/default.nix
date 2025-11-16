@@ -3,7 +3,7 @@
 
   networking.firewall = lib.mkIf config.networking.firewall.enable {
     trustedInterfaces = [ "Meta" ];
-    checkReversePath = false;
+    checkReversePath = "loose";
   };
 
   services.mihomo = {
