@@ -96,30 +96,5 @@
         { programs.nix-index-database.comma.enable = true; }
       ];
     };
-
-    nixosConfigurations.yeoz-classic = nixpkgs.lib.nixosSystem rec {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs system;
-        usingOfficialRaspiImg = false;
-      };
-      modules = [
-        ./hosts/yeoz-classic/system
-
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.saya = import ./hosts/yeoz-classic/user;
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-            pkgs-unfree = import inputs.nixpkgs { inherit system; config.allowUnfree = true; };
-            isLabtop = true;
-          };
-        }
-
-        inputs.nix-index-database.nixosModules.nix-index
-        { programs.nix-index-database.comma.enable = true; }
-      ];
-    };
   };
 }
