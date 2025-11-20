@@ -5,7 +5,6 @@
     ./fonts.nix
     ./bluetooth.nix
     ./pipewire.nix
-    ./kmonad
     #./pkgs.nix
   ];
 }
