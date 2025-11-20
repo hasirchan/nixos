@@ -6,7 +6,6 @@
     ./firefox.nix
   ];
   home.packages = with pkgs; [
-    vlc
     nerd-fonts.meslo-lg
     adminer
   ];

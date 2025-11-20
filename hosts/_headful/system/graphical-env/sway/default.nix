@@ -30,7 +30,6 @@
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
       kittyAsXterm
-      
       grim
       slurp
       wl-clipboard
@@ -44,6 +43,7 @@
       wiremix
       bluetuith
       soteria
+      mpv
     ];
   };
 
