@@ -4,6 +4,8 @@
     ./swayidle.nix
     ./wofi.nix
 
+
+    ./kitty.nix
     #./waybar
     ./swaybar
     ./mako.nix
