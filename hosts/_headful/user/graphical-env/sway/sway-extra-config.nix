@@ -6,7 +6,7 @@
       owner = "moverest";
       repo = "wl-kbptr";
       rev = "main";
-      sha256 = "sha256-IeyLoMdSnPN2slYUA3XU0uDxJwhWq5Dg9cNGgLOwvSQ=";
+      sha256 = "sha256-PF2NEr+yxI4NMI94urNEIRG0XDVjWAo7Kvsm+Vu78VQ=";
     };
     
     nativeBuildInputs = [ pkgs.makeWrapper ];    
