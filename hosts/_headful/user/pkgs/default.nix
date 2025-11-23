@@ -2,7 +2,7 @@
 { config, lib, pkgs, ... } :
 {
   imports = [
-    ./nvchad.nix
+    #./nvchad.nix
     ./firefox.nix
   ];
   home.packages = with pkgs; [
