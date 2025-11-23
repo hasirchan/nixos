@@ -16,7 +16,7 @@
   services.mySyncthing.enable = true;
   services.syncthing.settings = {
     devices."yeoz-nano" = {
-      id = "MB75EHH-7OE4HVL-B7EXFLI-ADWIZJW-26RHW3C-XSKVOKL-QXE5IEK-WLB6VAF"; 
+      id = "WRNUBG4-PX5UTMR-KUM527M-F75KALI-GAP5TW7-EHC62M7-BLD7FU2-WU2TMQO";
     };
     folders."share".devices = [
       "yeoz-nano"
