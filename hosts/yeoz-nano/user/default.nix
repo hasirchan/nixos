@@ -14,7 +14,7 @@
 
   services.syncthing.settings = {
     devices."yeoz-zen" = {
-      id = "3ZNFOFZ-SUTO3XO-EFIDA5P-4FQ36UP-I26CARI-WDMXJBE-BCTH7WU-C5QGMQK"; 
+      id = "UDQDXQW-QAAOY3H-GBZ4EQ2-ZCT6KZA-V4DDW7P-OXK2TB4-JPPLDO6-25C32AR";
     };
     folders."share".devices = [
       "yeoz-zen"
