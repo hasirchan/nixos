@@ -7,6 +7,9 @@
     ../../_headful/system/graphical-env/sway
     ./battery-charge-threshold.nix
     ./nvidia.nix
+
+    ../../_headful/system/flatpak.nix
+    ./flatpak.nix
   ];
 
   networking.hostName = "yeoz-zen"; 
