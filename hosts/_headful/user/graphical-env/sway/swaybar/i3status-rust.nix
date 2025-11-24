@@ -23,6 +23,20 @@
           };
         };
         */
+        settings = {
+          theme = {
+            theme = "plain";
+            overrides = {
+              idle_bg = "none";
+              good_bg = "none";
+              warning_bg = "none";
+              critical_bg = "none";
+              info_bg = "none";
+              alternating_tint_bg = "none";
+              separator_bg = "none";
+            };
+          };
+        };
         blocks = [
 
           {

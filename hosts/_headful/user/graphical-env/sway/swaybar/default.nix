@@ -14,6 +14,9 @@
         icon_theme Adwaita
       '';
 
+      colors = {
+        background = "#000000cc";
+      };
 
       fonts = {
         names = [ "JetBrainsMono Nerd Font" ];
