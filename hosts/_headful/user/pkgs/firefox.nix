@@ -7,6 +7,8 @@
       extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
         ublock-origin
         asbplayer
+        violentmonkey
+        videospeed
       ];
       settings = {
         "extensions.autoDisableScopes" = 0;
