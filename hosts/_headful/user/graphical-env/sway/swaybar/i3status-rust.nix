@@ -5,7 +5,6 @@
     enable = true;
     bars = {
       status = {
-
         /*
         settings = {
           theme = {
@@ -34,6 +33,20 @@
               info_bg = "none";
               alternating_tint_bg = "none";
               separator_bg = "none";
+              separator = "┃";
+            };
+          };
+          icons = {
+            icons = "material-nf";
+            overrides = {
+              backlight = [ "BRT" ];
+              bat_charging = "CHG";
+              bat_not_available = "NO BAT";
+              bat = [ "EMPTY" "BAT" "FULL" ];
+              volume_muted = "SPK MUT";
+              volume = [ "SPK" ];
+              microphone_muted = "MIC MUT";
+              microphone = [ "MIC" ];
             };
           };
         };
@@ -41,26 +54,27 @@
 
           {
             block = "sound";
-            format = " VOL $volume ";
-            format_alt = " $output_name {$volume} ";
+            format = "{$icon}{ $volume|}";
+            format_alt = "{$output_name}{ $volume|}";
             driver = "auto";
             step_width = 5;
           }
 
           {
             block = "backlight";
-            format = " BRT $brightness ";
+            format = "{$icon}{ $brightness|}";
             missing_format = "";
             step_width = 5;
             minimum = 1;
+            cycle = [1 10 20 30 40 50 60 70 80 90 100];
           }
 
           {
             block = "net";
             device = "^w.*";
-            format = " $device {$ip|N/A} ";
-            format_alt = " $device {$ip|N/A} {$ipv6|N/A} ";
-            inactive_format = " $device ";
+            format = "{$device}{ $ip| N/A}";
+            format_alt = "{$device}{ $ip| N/A}{ $ipv6| N/A}";
+            inactive_format = "{$device}";
             missing_format = "";
             interval = 1;
           }
@@ -68,26 +82,25 @@
           {
             block = "net";
             device = "^e.*";
-            format = " $device {$ip|N/A} ";
-            format_alt = " $device {$ip|N/A} {$ipv6|N/A} ";
-            inactive_format = " $device ";
+            format = "{$device}{ $ip| N/A}";
+            format_alt = "{$device}{ $ip| N/A}{ $ipv6| N/A}";
+            inactive_format = "{$device}";
             missing_format = "";
             interval = 1;
           }
 
           {
             block = "battery";
-            format = " BAT $percentage ";
-            full_format = " FULL ";
-            charging_format = " CHG $percentage ";
-            empty_format = " EMPTY ";
+            format = "{$icon}{ $percentage|}";
+            full_format = "{$icon}";
+            empty_format = "{$icon}";
             missing_format = "";
             interval = 1;
           }
 
           {
             block = "time";
-            format = " $timestamp.datetime(f:'%a %d/%m/%y %H:%M:%S') ";
+            format = "{$timestamp.datetime(f:'%a %d/%m/%y %H:%M:%S')}";
             interval = 1;
           }
         ];
