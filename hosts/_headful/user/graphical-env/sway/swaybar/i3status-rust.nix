@@ -56,6 +56,7 @@
             format_alt = "{$output_name}{ $volume|}";
             driver = "auto";
             step_width = 5;
+            max_vol = 100;
           }
 
           {
@@ -65,6 +66,7 @@
             format_alt = "{$output_name}{ $volume|}";
             driver = "auto";
             step_width = 5;
+            max_vol = 150;
           }
 
           {
