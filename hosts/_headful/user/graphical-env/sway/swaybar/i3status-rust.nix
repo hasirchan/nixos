@@ -89,8 +89,11 @@
 
           {
             block = "battery";
-            format = "<-{$percentage|?}";
+            format = "<-{$percentage|}";
             charging_format = "->{$percentage|?}";
+            not_charging_format = "->!{$percentage|?}";
+            empty_format = "○";
+            full_format = "◉";
             missing_format = "";
             interval = 1;
           }
