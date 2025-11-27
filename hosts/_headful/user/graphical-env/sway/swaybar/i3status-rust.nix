@@ -40,11 +40,10 @@
             icons = "material-nf";
             overrides = {
               backlight = [ "BRT" ];
-
-              volume_muted = "SPK MUT";
-              volume = [ "SPK" ];
-              microphone_muted = "MIC MUT";
-              microphone = [ "MIC" ];
+              volume_muted = "AOUT MUT";
+              volume = [ "AOUT" ];
+              microphone_muted = "AIN MUT";
+              microphone = [ "AIN" ];
             };
           };
         };
@@ -52,6 +51,16 @@
 
           {
             block = "sound";
+            device_kind = "source";
+            format = "{$icon}{ $volume|}";
+            format_alt = "{$output_name}{ $volume|}";
+            driver = "auto";
+            step_width = 5;
+          }
+
+          {
+            block = "sound";
+            device_kind = "sink";
             format = "{$icon}{ $volume|}";
             format_alt = "{$output_name}{ $volume|}";
             driver = "auto";
