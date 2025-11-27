@@ -92,8 +92,8 @@
             format = "<-{$percentage|}";
             charging_format = "->{$percentage|?}";
             not_charging_format = "->!{$percentage|?}";
-            empty_format = "○";
-            full_format = "◉";
+            empty_format = "EMPTY";
+            full_format = "FULL";
             missing_format = "";
             interval = 1;
           }
