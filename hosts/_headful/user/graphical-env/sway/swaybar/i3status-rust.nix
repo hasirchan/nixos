@@ -40,9 +40,7 @@
             icons = "material-nf";
             overrides = {
               backlight = [ "BRT" ];
-              bat_charging = "CHG";
-              bat_not_available = "NO BAT";
-              bat = [ "EMPTY" "BAT" "FULL" ];
+
               volume_muted = "SPK MUT";
               volume = [ "SPK" ];
               microphone_muted = "MIC MUT";
@@ -91,9 +89,8 @@
 
           {
             block = "battery";
-            format = "{$icon}{ $percentage|}";
-            full_format = "{$icon}";
-            empty_format = "{$icon}";
+            format = "<-{$percentage|?}";
+            charging_format = "->{$percentage|?}";
             missing_format = "";
             interval = 1;
           }
