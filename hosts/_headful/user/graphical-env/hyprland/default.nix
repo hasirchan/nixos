@@ -38,10 +38,10 @@
     enable = true;
     settings = {
       preload = [
-        "~/Pictures/Backgrounds/desktop1.png"
+        "~/Pictures/Backgrounds/desktop.png"
       ];
       wallpaper = [
-        "eDP-1,~/Pictures/Backgrounds/desktop1.png"
+        "eDP-1,~/Pictures/Backgrounds/desktop.png"
       ];
     };
   };
