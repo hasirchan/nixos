@@ -3,7 +3,8 @@
 {
   imports = [
     ../../_headful/user
-    ../../_headful/user/graphical-env/sway
+    #../../_headful/user/graphical-env/sway
+    ../../_headful/user/graphical-env/hyprland
     #../../_headful/user/pkgs/texlive.nix
     #../../_headful/user/pkgs/anki.nix
     #../../_headful/user/pkgs/vscode.nix
