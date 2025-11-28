@@ -42,7 +42,7 @@
           fade_on_empty = true;
           fade_timeout = 1000;
           
-          placeholder_text = "<i>I am an input filed.</i>";
+          placeholder_text = "<i>I am a input filed.</i>";
           
           position = "0, -20%";
           halign = "center";
