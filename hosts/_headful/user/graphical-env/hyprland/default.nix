@@ -1,5 +1,4 @@
-{ config, lib, pkgs, osConfig, ... }:
-{
+{ config, lib, pkgs, osConfig, ... }: {
   imports = [
     ./kitty.nix
     ./ashell.nix
@@ -26,6 +25,10 @@
     '';
   };
 
+  home.packages = with pkgs; [
+    wl-kbptr
+    wlrctl
+  ];
   services.hyprpolkitagent.enable = true;
   services.mako = {
     enable = true;
@@ -139,6 +142,7 @@
       bind = CONTROL,SPACE,submap,root
       submap = root
 
+
       bind = ,F,fullscreen,0
       bind = ,Q,exec,$terminal
       bind = ,E,exec,$fileManager
@@ -199,6 +203,36 @@
       bindrt = ,SPACE,submap,reset 
 
       submap = reset
+
+
+      # Mouse Mode
+      submap=cursor
+
+      bind=,a,exec,hyprctl dispatch submap reset && wl-kbptr && hyprctl dispatch submap cursor
+
+      binde=,j,exec,wlrctl pointer move 0 10
+      binde=,k,exec,wlrctl pointer move 0 -10
+      binde=,l,exec,wlrctl pointer move 10 0
+      binde=,h,exec,wlrctl pointer move -10 0
+
+      bind=,s,exec,wlrctl pointer click left
+      bind=,d,exec,wlrctl pointer click middle
+      bind=,f,exec,wlrctl pointer click right
+
+      binde=,e,exec,wlrctl pointer scroll 10 0
+      binde=,r,exec,wlrctl pointer scroll -10 0
+
+      binde=,t,exec,wlrctl pointer scroll 0 -10
+      binde=,g,exec,wlrctl pointer scroll 0 10
+
+      bind=,escape,exec,hyprctl keyword cursor:inactive_timeout 3; hyprctl keyword cursor:hide_on_key_press true; hyprctl dispatch submap reset 
+
+      submap = reset
+
+      bind=$mainMod,G,exec,wl-kbptr
+      bind=$mainMod,B,exec,hyprctl keyword cursor:inactive_timeout 0; hyprctl keyword cursor:hide_on_key_press false; hyprctl dispatch submap cursor
+      bind=$mainMod,N,exec,wl-kbptr -o modes=floating,click -o mode_floating.source=detect
+
     '';
   };
 }
