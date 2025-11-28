@@ -12,7 +12,8 @@
        ]]
       
       vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
-
+  
+      vim.opt.clipboard = "unnamedplus"
       vim.opt.number = true
       vim.opt.expandtab = true
       vim.opt.tabstop = 2
