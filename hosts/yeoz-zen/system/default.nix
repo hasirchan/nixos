@@ -4,7 +4,8 @@
   imports = [
     ./hardware-configuration.nix
     ../../_headful/system
-    ../../_headful/system/graphical-env/sway
+    # ../../_headful/system/graphical-env/sway
+    ../../_headful/system/graphical-env/hyprland
     ./battery-charge-threshold.nix
     ./nvidia.nix
 
