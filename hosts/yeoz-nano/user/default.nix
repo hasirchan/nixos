@@ -11,6 +11,13 @@
     #../../_headful/user/pkgs/aseprite.nix
   ];
 
+  wayland.windowManager.hyprland.settings = lib.mkIf config.wayland.windowManager.hyprland.enable {
+    monitor = [
+      "eDP-1,1920x1080,0x0,1.2"
+    ];
+
+  };
+
   services.mySyncthing.enable = true;
 
   services.syncthing.settings = {
