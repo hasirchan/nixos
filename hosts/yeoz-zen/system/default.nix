@@ -11,9 +11,12 @@
 
     ../../_headful/system/flatpak.nix
     ./flatpak.nix
+    ./data.nix
   ];
 
   networking.hostName = "yeoz-zen"; 
+
+  environment.systemPackages = with pkgs; [ quickemu ];
 
   environment.etc."wireplumber/wireplumber.conf.d/alsa-soft-mixer.conf".text = ''
     monitor.alsa.rules = [
