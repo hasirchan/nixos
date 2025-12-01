@@ -70,6 +70,11 @@
       "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${sway-launcher} --user-menu --user-menu-min-uid 1000"
   );
 
+  services.udev.extraRules = ''
+    KERNEL=="card*", KERNELS=="0000:00:02.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/intel-igpu"
+    KERNEL=="card*", KERNELS=="0000:01:00.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/nvidia-dgpu"
+  '';
+
   services.xserver.videoDrivers = [ "modesetting" "nvidia"];
   hardware.graphics = {
     enable = true;

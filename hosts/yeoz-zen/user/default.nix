@@ -14,6 +14,9 @@
     # ./waybar.nix
   ];
 
+  wayland.windowManager.hyprland.settings.env = lib.mkIf config.wayland.windowManager.hyprland.enable (lib.mkAfter [
+    "AQ_DRM_DEVICES,/dev/dri/intel-igpu:/dev/dri/nvidia-dgpu"
+  ]);
   services.mySyncthing.enable = true;
   services.syncthing.settings = {
     devices."yeoz-nano" = {
