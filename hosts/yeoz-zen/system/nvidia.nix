@@ -70,7 +70,7 @@
       "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${sway-launcher} --user-menu --user-menu-min-uid 1000"
   );
 
-  services.udev.extraRules = ''
+  services.udev.extraRules = lib.mkAfter ''
     KERNEL=="card*", KERNELS=="0000:00:02.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/intel-igpu"
     KERNEL=="card*", KERNELS=="0000:01:00.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/nvidia-dgpu"
   '';
