@@ -144,7 +144,7 @@
 
 
       bind = ,F,fullscreen,0
-      bind = ,Q,exec,$terminal
+      bind = ,RETURN,exec,$terminal
       bind = ,E,exec,$fileManager
       bind = ,C,killactive
       bind = ,M,exit
