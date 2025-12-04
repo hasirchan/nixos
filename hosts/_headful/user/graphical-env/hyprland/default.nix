@@ -152,7 +152,6 @@
       bind = ,R,exec,$menu
       bind = ,P,pseudo
       bind = ,I,togglesplit
-      bind = ,RETURN,exec,hyprctl dispatch submap reset; loginctl lock-session
 
       bind = ,left,movefocus,l
       bind = ,right,movefocus,r
@@ -232,6 +231,7 @@
       bind=$mainMod,G,exec,wl-kbptr
       bind=$mainMod,B,exec,hyprctl keyword cursor:inactive_timeout 0; hyprctl keyword cursor:hide_on_key_press false; hyprctl dispatch submap cursor
       bind=$mainMod,N,exec,wl-kbptr -o modes=floating,click -o mode_floating.source=detect
+      bind=$mainMod,L,exec,loginctl lock-session
 
     '';
   };
