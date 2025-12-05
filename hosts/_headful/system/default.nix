@@ -5,6 +5,7 @@
     ./fonts.nix
     ./bluetooth.nix
     ./pipewire.nix
+    ./bash.nix
     #./pkgs.nix
   ];
 }
