@@ -1,0 +1,86 @@
+// Universal colors - works with both light and dark backgrounds
+$primary: #5b9bd5;
+$accent: #70ad47;
+$border: rgba(255, 255, 255, 0.3);
+$text-primary: #2c3e50;
+$text-secondary: #7f8c8d;
+$bg-widget: rgba(240, 240, 245, 0.85);
+$bg-hover: rgba(220, 220, 230, 0.9);
+$bg-active: #5b9bd5;
+$shadow: rgba(0, 0, 0, 0.15);
+
+* {
+  all: unset;
+}
+
+window {
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK SC", sans-serif;
+  font-size: 10px;
+  background-color: transparent;
+}
+
+.bar {
+  background-color: transparent;
+  padding: 4px 8px;
+}
+
+// ━━━━ workspaces ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+.workspaces {
+  padding: 4px 8px;
+  background-color: $bg-widget;
+  border-radius: 8px;
+  border: 1px solid $border;
+  box-shadow: 0 2px 4px $shadow;
+}
+
+.workspace {
+  margin: 2px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: transparent;
+  transition: all 0.2s ease;
+  
+  .icon {
+    margin: 0 2px;
+    font-size: 9px;
+    color: $text-secondary;
+  }
+  
+  &:hover {
+    background-color: $bg-hover;
+  }
+}
+
+.workspace.workspace-on-screen {
+  background-color: rgba(123, 160, 200, 0.3);
+  
+  .icon {
+    color: $text-primary;
+  }
+}
+
+.workspace.workspace-active {
+  background-color: $bg-active;
+  
+  .icon {
+    color: white;
+    font-weight: bold;
+  }
+  
+  &:hover {
+    background-color: #4a8bc2;
+  }
+}
+
+// ━━━━ datetime ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+.datetime {
+  color: $text-primary;
+  font-size: 10px;
+  padding: 4px 12px;
+  background-color: $bg-widget;
+  border-radius: 8px;
+  border: 1px solid $border;
+  box-shadow: 0 2px 4px $shadow;
+}
