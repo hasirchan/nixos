@@ -1,10 +1,11 @@
 { config, lib, pkgs, osConfig, ... }: {
   imports = [
     ./kitty.nix
-    ./ashell.nix
     ./hyprlock.nix
+    #./eww
+    ./waybar.nix
   ];
-  
+ 
   xdg = {
     enable = true;
     autostart.enable = true;
@@ -29,6 +30,7 @@
     wl-kbptr
     wlrctl
   ];
+
   services.hyprpolkitagent.enable = true;
   services.mako = {
     enable = true;
@@ -97,20 +99,20 @@
       "$menu" = "rofi -show drun";
 
       workspace = [
-        "1, default:true"
+        "1, default:true, persistent:true"
         "2, persistent:true"
         "3, persistent:true"
         "4, persistent:true"
         "5, persistent:true"
       ];
-
+/*
       general = {
         gaps_in = 1;
         gaps_out = 0;
       };
-
+*/
       exec-once = [
-        "ashell"
+        "waybar"
       ];
 
       bind = let 
