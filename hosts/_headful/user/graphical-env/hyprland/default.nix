@@ -2,8 +2,8 @@
   imports = [
     ./kitty.nix
     ./hyprlock.nix
-    #./eww
-    ./waybar.nix
+    ./eww
+    #./waybar.nix
   ];
  
   xdg = {
@@ -97,14 +97,11 @@
       "$mainMod" = "SUPER";
       "$terminal" = "kitty";
       "$menu" = "rofi -show drun";
-
+/*
       workspace = [
-        "1, default:true, persistent:true"
-        "2, persistent:true"
-        "3, persistent:true"
-        "4, persistent:true"
-        "5, persistent:true"
+        "1, default:true"
       ];
+*/
 /*
       general = {
         gaps_in = 1;
@@ -112,7 +109,7 @@
       };
 */
       exec-once = [
-        "waybar"
+        "eww open bar"
       ];
 
       bind = let 

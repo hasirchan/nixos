@@ -1,49 +1,46 @@
-// Universal colors - works with both light and dark backgrounds
 $primary: #5b9bd5;
 $accent: #70ad47;
-$border: rgba(255, 255, 255, 0.3);
-$text-primary: #2c3e50;
-$text-secondary: #7f8c8d;
-$bg-widget: rgba(240, 240, 245, 0.85);
-$bg-hover: rgba(220, 220, 230, 0.9);
+$border: rgba(255, 255, 255, 0.8);
+$text-primary: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.7);
+$bg-widget: rgba(0, 0, 0, 0.6);
+$bg-hover: rgba(255, 255, 255, 0.15);
 $bg-active: #5b9bd5;
 $shadow: rgba(0, 0, 0, 0.15);
 
 * {
   all: unset;
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK SC", sans-serif;
 }
 
 window {
-  font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK SC", sans-serif;
-  font-size: 10px;
   background-color: transparent;
 }
 
 .bar {
   background-color: transparent;
-  padding: 4px 8px;
+  padding: 0px 20px 0 20px;
 }
 
 // ━━━━ workspaces ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
 .workspaces {
-  padding: 4px 8px;
   background-color: $bg-widget;
-  border-radius: 8px;
-  border: 1px solid $border;
-  box-shadow: 0 2px 4px $shadow;
+  border-radius: 4px;
+  border: 2px solid $border;
+  box-shadow: 0 1px 3px $shadow;
 }
 
 .workspace {
-  margin: 2px;
-  padding: 2px 6px;
-  border-radius: 4px;
+  margin: 0 2px;
+  padding: 0px 4px;
+  border-radius: 3px;
   background-color: transparent;
   transition: all 0.2s ease;
   
   .icon {
     margin: 0 2px;
-    font-size: 9px;
+    font-size: 10px;
     color: $text-secondary;
   }
   
@@ -53,10 +50,11 @@ window {
 }
 
 .workspace.workspace-on-screen {
-  background-color: rgba(123, 160, 200, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   
   .icon {
     color: $text-primary;
+    font-weight: 500;
   }
 }
 
@@ -78,9 +76,9 @@ window {
 .datetime {
   color: $text-primary;
   font-size: 10px;
-  padding: 4px 12px;
+  padding: 1px 4px;
   background-color: $bg-widget;
-  border-radius: 8px;
-  border: 1px solid $border;
-  box-shadow: 0 2px 4px $shadow;
+  border-radius: 4px;
+  border: 2px solid $border;
+  box-shadow: 0 1px 3px $shadow;
 }

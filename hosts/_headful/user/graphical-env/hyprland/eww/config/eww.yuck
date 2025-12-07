@@ -18,7 +18,7 @@
        :class "bar"
     (box :class "left"
          :halign "start"
-         :spacing 10
+         :spacing 6
          :hexpand false
       (workspaces :monitor monitor))
     (box :class "center"
@@ -26,7 +26,7 @@
          :hexpand true)
     (box :class "right"
          :halign "end"
-         :spacing 10
+         :spacing 6
          :hexpand false
       (datetime))))
 
