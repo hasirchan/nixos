@@ -1,84 +1,56 @@
-$primary: #5b9bd5;
-$accent: #70ad47;
-$border: rgba(255, 255, 255, 0.8);
-$text-primary: #ffffff;
-$text-secondary: rgba(255, 255, 255, 0.7);
-$bg-widget: rgba(0, 0, 0, 0.6);
-$bg-hover: rgba(255, 255, 255, 0.15);
-$bg-active: #5b9bd5;
-$shadow: rgba(0, 0, 0, 0.15);
-
 * {
   all: unset;
-  font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK SC", sans-serif;
 }
 
 window {
   background-color: transparent;
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK SC", sans-serif;
+  font-size: 10px;
 }
 
 .bar {
   background-color: transparent;
-  padding: 0px 20px 0 20px;
+  margin: 0px;
+  padding: 0px;
 }
 
-// ━━━━ workspaces ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
-
 .workspaces {
-  background-color: $bg-widget;
-  border-radius: 4px;
-  border: 2px solid $border;
-  box-shadow: 0 1px 3px $shadow;
 }
 
 .workspace {
-  margin: 0 2px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin: 0px;
   padding: 0px 4px;
-  border-radius: 3px;
-  background-color: transparent;
-  transition: all 0.2s ease;
-  
   .icon {
-    margin: 0 2px;
-    font-size: 10px;
-    color: $text-secondary;
   }
-  
   &:hover {
-    background-color: $bg-hover;
+    background: rgba(40, 40, 40, 0.7);
   }
 }
 
 .workspace.workspace-on-screen {
-  background-color: rgba(255, 255, 255, 0.2);
-  
   .icon {
-    color: $text-primary;
-    font-weight: 500;
+  }
+  &:hover {
   }
 }
 
 .workspace.workspace-active {
-  background-color: $bg-active;
-  
+  background: rgba(60, 60, 60, 0.7);
+  border: 2px solid rgba(255, 255, 255, 1);
+  font-weight: 900;
   .icon {
-    color: white;
-    font-weight: bold;
   }
   
   &:hover {
-    background-color: #4a8bc2;
+    background: rgba(70, 70, 70, 0.7);
   }
 }
-
-// ━━━━ datetime ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
-
 .datetime {
-  color: $text-primary;
-  font-size: 10px;
-  padding: 1px 4px;
-  background-color: $bg-widget;
-  border-radius: 4px;
-  border: 2px solid $border;
-  box-shadow: 0 1px 3px $shadow;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 1);
+  font-weight: 900;
+  margin: 0px;
+  padding: 0px 4px;
 }
