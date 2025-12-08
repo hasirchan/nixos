@@ -21,7 +21,7 @@ window {
   background: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.5);
   margin: 0px;
-  padding: 0px 4px;
+  padding: 1px 4px;
   .icon {
   }
   &:hover {
@@ -38,7 +38,7 @@ window {
 
 .workspace.workspace-active {
   background: rgba(60, 60, 60, 0.7);
-  border: 2px solid rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 1);
   font-weight: 900;
   .icon {
   }
@@ -49,8 +49,8 @@ window {
 }
 .datetime {
   background: rgba(0, 0, 0, 0.6);
-  border: 2px solid rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 1);
   font-weight: 900;
   margin: 0px;
-  padding: 0px 4px;
+  padding: 1px 4px;
 }
