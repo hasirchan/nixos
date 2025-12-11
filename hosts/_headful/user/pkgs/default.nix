@@ -2,11 +2,10 @@
 { config, lib, pkgs, ... } :
 {
   imports = [
-    #./nvchad.nix
     ./firefox.nix
   ];
   home.packages = with pkgs; [
-    nerd-fonts.meslo-lg
     adminer
+    pdfpc
   ];
 }
