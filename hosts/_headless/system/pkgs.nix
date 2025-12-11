@@ -84,5 +84,6 @@
     "nvidia-settings"
     "nvidia-persistenced"
     "vscode"
+    "corefonts"
   ];
 }
