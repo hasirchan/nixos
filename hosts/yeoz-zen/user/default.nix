@@ -6,6 +6,7 @@
     # ../../_headful/user/graphical-env/sway
     ../../_headful/user/graphical-env/hyprland
     ../../_headful/user/pkgs/default.nix
+    ../../_headful/user/pkgs/tex.nix
     #../../_headful/user/pkgs/texlive.nix
     #../../_headful/user/pkgs/vscode.nix
     #../../_headful/user/pkgs/aseprite.nix
