@@ -145,7 +145,7 @@
       bind = ,F,fullscreen,0
       bind = ,RETURN,exec,$terminal
       bind = ,E,exec,$fileManager
-      bind = ,C,killactive
+      bind = ,Q,killactive
       bind = ,M,exit
       bind = ,V,togglefloating
       bind = ,R,exec,$menu
@@ -192,18 +192,19 @@
       bind = SHIFT,9,movetoworkspace,9
       bind = SHIFT,0,movetoworkspace,10
 
-      bind = ,S,togglespecialworkspace,magic
-      bind = SHIFT,S,movetoworkspace,special:magic
+      bind = ,S,togglespecialworkspace,S
+      bind = SHIFT,S,movetoworkspace,special:S
+      bind = ,T,togglespecialworkspace,T
+      bind = SHIFT,T,movetoworkspace,special:T
 
       bind = ,mouse_down,workspace,e+1
       bind = ,mouse_up,workspace,e-1
 
+      bind = , escape, submap, reset
       bindrt = ,SPACE,submap,reset 
 
       submap = reset
 
-
-      # Mouse Mode
       submap=cursor
 
       bind=,a,exec,hyprctl dispatch submap reset && wl-kbptr && hyprctl dispatch submap cursor

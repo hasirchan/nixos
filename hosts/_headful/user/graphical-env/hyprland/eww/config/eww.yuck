@@ -40,7 +40,7 @@
     (for wsp in workspaces_data
       (button :class "workspace ${wsp.class}"
               :onclick "hyprctl dispatch workspace ${wsp.id}"
-        (label :class "icon" :text "${wsp.name}")))))
+        (label :class "icon" :text "${replace(wsp.name, 'special:', '')}")))))
 
 ; ━━━━ datetime ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
