@@ -37,7 +37,7 @@
         ]]
 
         vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
-    
+
         vim.opt.clipboard = "unnamedplus"
         vim.opt.number = true
         vim.opt.expandtab = true
@@ -61,17 +61,36 @@
         })
       '';
 
-      tabCompletion = ''
+      completion = ''
+        local has_words_before = function()
+          local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+          return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+        end
+
         vim.keymap.set('i', '<Tab>', function()
           if vim.fn.pumvisible() == 1 then
             return '<C-n>'
-          else
+          elseif has_words_before() then
             return '<C-x><C-o>'
+          else
+            return '<Tab>'
+          end
+        end, { expr = true, desc = "Smart Tab" })
+
+        vim.keymap.set('i', '<S-Tab>', function()
+          if vim.fn.pumvisible() == 1 then
+            return '<C-p>'
+          else
+            return '<S-Tab>'
           end
         end, { expr = true })
 
         vim.keymap.set('i', '<CR>', function()
-          return vim.fn.pumvisible() ~= 0 and '<C-y>' or '<CR>'
+          if vim.fn.pumvisible() ~= 0 then
+            return '<C-y>'
+          else
+            return '<CR>'
+          end
         end, { expr = true })
       '';
 
@@ -121,7 +140,7 @@
       ${general}
       ${terminalSettings}
       ${diagnosis}
-      ${tabCompletion}
+      ${completion}
       ${leaderKeyMap}
       ${lspConfig}
     '';
