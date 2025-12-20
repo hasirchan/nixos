@@ -5,6 +5,7 @@
     cores = {
       mesen.enable = true;
       mesen-s.enable = true;
+      mgba.enable = true;
     };
   };
 }
