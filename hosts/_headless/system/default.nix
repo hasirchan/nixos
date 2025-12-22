@@ -7,6 +7,7 @@
     ./firewall.nix
     ./i2pd.nix
     ./bbr.nix
+    ./zram.nix
   ];
 
   time.timeZone = "Asia/Singapore";
