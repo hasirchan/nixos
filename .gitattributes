@@ -1,2 +1,2 @@
 hosts/_headless/system/mihomo/mihomo.yaml filter=git-crypt diff=git-crypt
-
+hosts/_headless/user/pkgs/email.nix filter=git-crypt diff=git-crypt
