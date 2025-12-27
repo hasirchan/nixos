@@ -8,6 +8,7 @@
     ../../_headful/user/pkgs/default.nix
     ../../_headful/user/pkgs/tex.nix
     ../../_headful/user/pkgs/retroarch.nix
+    ../../_headless/user/pkgs/email.nix
     #../../_headful/user/pkgs/texlive.nix
     #../../_headful/user/pkgs/vscode.nix
     #../../_headful/user/pkgs/aseprite.nix
