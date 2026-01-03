@@ -1,8 +1,8 @@
 { config, pkgs, lib, options, self, ... }:
 
 let
-  domain = "${config.sops.secrets.domain.path}";
-  mailDomain = "${config.sops.secrets.mail_domain.path}";
+  domain = "0x7c00.org";
+  mailDomain = "mail.0x7c00.org";
   adminEmail = "admin@${config.sops.secrets.domain.path}";
 in {
 
