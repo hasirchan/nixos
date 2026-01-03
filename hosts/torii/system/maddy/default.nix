@@ -14,6 +14,8 @@ in {
     dmarc-report_password = { sopsFile = "${self}/secrets/email.yaml"; };
     postmaster_password = { sopsFile = "${self}/secrets/email.yaml"; };
     abuse_password = { sopsFile = "${self}/secrets/email.yaml"; };
+    domain = { sopsFile = "${self}/secrets/email.yaml"; };
+    mail_domain = { sopsFile = "${self}/secrets/email.yaml"; };
   };
 
   networking.firewall.allowedTCPPorts = [ 25 143 465 587 993 ];
