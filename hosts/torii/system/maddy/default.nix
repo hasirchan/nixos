@@ -22,7 +22,7 @@ in {
       "postmaster@${domain}"
       "abuse@${domain}"
       "dmarc-report@${domain}"
-      config.sops.secrets.main_username
+      config.sops.secrets.main_username.path
     ];
 
     tls = {
