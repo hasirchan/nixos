@@ -15,3 +15,6 @@ creation_rules:
 
   - path_regex: hosts/torii/system/maddy/secrets.yaml$
     age: [ *gohei, *ofuda ]
+
+  - path_regex: secrets/email.yaml$
+    age: [ *gohei, *ofuda ]

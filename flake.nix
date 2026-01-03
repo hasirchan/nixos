@@ -45,7 +45,7 @@
                 sops.age.keyFile = "/home/saya/.config/sops/age/keys.txt";
               };
               home-manager.extraSpecialArgs = {
-                inherit inputs;
+                inherit inputs self;
                 pkgs-unfree = import nixpkgs {
                   inherit system;
                   config.allowUnfree = true;

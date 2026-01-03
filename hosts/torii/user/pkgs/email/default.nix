@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, self, ... }:
 
 let
   secrets = config.sops.secrets;
@@ -44,11 +44,11 @@ let
 in
 {
   sops.secrets = {
-    "postmaster_password" = { sopsFile = ./secrets.yaml; };
-    "abuse_password"      = { sopsFile = ./secrets.yaml; };
-    "dmarc-report_password"      = { sopsFile = ./secrets.yaml; };
-    "main_username"       = { sopsFile = ./secrets.yaml; };
-    "main_password"       = { sopsFile = ./secrets.yaml; };
+    postmaster_password   = { sopsFile = "${self}/secrets/email.yaml"; };
+    abuse_password        = { sopsFile = "${self}/secrets/email.yaml"; };
+    dmarc-report_password = { sopsFile = "${self}/secrets/email.yaml"; };
+    main_username         = { sopsFile = "${self}/secrets/email.yaml"; };
+    main_password         = { sopsFile = "${self}/secrets/email.yaml"; };
   };
 
   accounts.email = {

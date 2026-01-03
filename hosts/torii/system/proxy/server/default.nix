@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  sops.secrets."sing-box-config" = {
+  sops.secrets.sing-box-config = {
     sopsFile = ./sing-box.json;
     format = "json";
     key = "";
@@ -15,7 +15,7 @@
     serviceConfig = {
       ExecStart = [
         ""
-        "${pkgs.sing-box}/bin/sing-box -D /var/lib/sing-box -c ${config.sops.secrets."sing-box-config".path} run"
+        "${pkgs.sing-box}/bin/sing-box -D /var/lib/sing-box -c ${config.sops.secrets.sing-box-config.path} run"
       ];
     };
   };

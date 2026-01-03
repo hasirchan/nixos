@@ -1,4 +1,4 @@
-{ config, pkgs, lib, options, ... }:
+{ config, pkgs, lib, options, self, ... }:
 
 let
   domain = "0x7c00.org";
@@ -7,7 +7,8 @@ let
 in {
 
   sops.secrets = {
-    "cloudflare_dns_api_token" = { sopsFile = ./secrets.yaml; };
+    cloudflare_dns_api_token = { sopsFile = ./secrets.yaml; };
+    main_username = { sopsFile = "${self}/secrets/email.yaml"; };
   };
 
   networking.firewall.allowedTCPPorts = [ 25 143 465 587 993 ];
@@ -20,6 +21,8 @@ in {
       adminEmail
       "postmaster@${domain}"
       "abuse@${domain}"
+      "dmarc-report@${domain}"
+      config.secrets.main_username
     ];
 
     tls = {
@@ -51,7 +54,7 @@ in {
         domain = mailDomain;
         group = "maddy";
         dnsProvider = "cloudflare";
-        environmentFile = config.sops.secrets."cloudflare_dns_api_token".path;
+        environmentFile = config.sops.secrets.cloudflare_dns_api_token.path;
       };
     };
   };
