@@ -1,14 +1,19 @@
 { config, pkgs, lib, options, self, ... }:
 
 let
-  domain = "0x7c00.org";
-  mailDomain = "mail.0x7c00.org";
-  adminEmail = "admin@0x7c00.org";
+  domain = "${config.sops.secrets.domain.path}";
+  mailDomain = "${config.sops.secrets.mail_domain.path}";
+  adminEmail = "admin@${config.sops.secrets.domain.path}";
 in {
 
   sops.secrets = {
     cloudflare_dns_api_token = { sopsFile = ./secrets.yaml; };
     main_username = { sopsFile = "${self}/secrets/email.yaml"; };
+    main_password = { sopsFile = "${self}/secrets/email.yaml"; };
+    admin_password = { sopsFile = "${self}/secrets/email.yaml"; };
+    dmarc-report_password = { sopsFile = "${self}/secrets/email.yaml"; };
+    postmaster_password = { sopsFile = "${self}/secrets/email.yaml"; };
+    abuse_password = { sopsFile = "${self}/secrets/email.yaml"; };
   };
 
   networking.firewall.allowedTCPPorts = [ 25 143 465 587 993 ];
@@ -22,8 +27,28 @@ in {
       "postmaster@${domain}"
       "abuse@${domain}"
       "dmarc-report@${domain}"
-      config.sops.secrets.main_username.path
+      "${config.sops.secrets.main_username.path}"
     ];
+    ensureCredentials = {
+      "${adminEmail}" = {
+        passwordFile = config.sops.secrets.admin_password.path;
+      };
+      
+      "postmaster@${domain}" = {
+        passwordFile = config.sops.secrets.postmaster_password.path;
+      };
+      
+      "dmarc-report@${domain}" = {
+        passwordFile = config.sops.secrets.dmarc-report_password.path;
+      };
+      
+      "abuse@${domain}" = {
+        passwordFile = config.sops.secrets.abuse_password.path;
+      };
+      "${config.sops.secrets.main_username.path}" = {
+        passwordFile = config.sops.secrets.main_password.path;
+      };
+    };
 
     tls = {
       loader = "file";
