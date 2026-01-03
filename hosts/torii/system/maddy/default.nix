@@ -26,7 +26,7 @@ in {
       "postmaster@${domain}"
       "abuse@${domain}"
       "dmarc-report@${domain}"
-      "${config.sops.secrets.main_username.path}"
+      "mbr@${domain}"
     ];
     ensureCredentials = {
       "${adminEmail}" = {
