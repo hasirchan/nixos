@@ -25,8 +25,8 @@ in {
     tls = {
       loader = "file";
       certificates = [{
-        cert = "/var/lib/acme/${domain}/fullchain.pem";
-        key = "/var/lib/acme/${domain}/key.pem";
+        certPath = "/var/lib/acme/${domain}/fullchain.pem";
+        keyPath = "/var/lib/acme/${domain}/key.pem";
       }];
     };
 
