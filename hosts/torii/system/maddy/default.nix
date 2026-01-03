@@ -3,7 +3,7 @@
 let
   domain = "0x7c00.org";
   mailDomain = "mail.0x7c00.org";
-  adminEmail = "admin@${config.sops.secrets.domain.path}";
+  adminEmail = "admin@${domain}";
 in {
 
   sops.secrets = {
