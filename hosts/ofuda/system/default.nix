@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../torii/system
+    ../../torii/system/maddy
     ../../torii/system/proxy/server
   ];
   
