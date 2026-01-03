@@ -8,12 +8,12 @@ in {
 
   sops.secrets = {
     cloudflare_dns_api_token = { sopsFile = ./secrets.yaml; };
-    main_username = { sopsFile = "${self}/secrets/email.yaml"; };
-    main_password = { sopsFile = "${self}/secrets/email.yaml"; };
-    admin_password = { sopsFile = "${self}/secrets/email.yaml"; };
-    dmarc-report_password = { sopsFile = "${self}/secrets/email.yaml"; };
-    postmaster_password = { sopsFile = "${self}/secrets/email.yaml"; };
-    abuse_password = { sopsFile = "${self}/secrets/email.yaml"; };
+    main_username = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
+    main_password = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
+    admin_password = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
+    dmarc-report_password = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
+    postmaster_password = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
+    abuse_password = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
     domain = { sopsFile = "${self}/secrets/email.yaml"; };
     mail_domain = { sopsFile = "${self}/secrets/email.yaml"; };
   };
