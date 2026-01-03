@@ -30,7 +30,7 @@
       mkSystem = { hostname, system ? "x86_64-linux", bootMode ? "systemd-boot" }: 
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs system bootMode; };
+          specialArgs = { inherit inputs system bootMode self; };
           modules = [
             ./hosts/${hostname}/system
 
