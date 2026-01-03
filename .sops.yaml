@@ -4,9 +4,6 @@ keys:
   - &suzu age1aa6wkqfnkvt8mx2puv0h7kz9njsxglnvkxkzztt293lf48m84sgskwz06e
 
 creation_rules:
-  - path_regex: hosts/torii/user/pkgs/email/secrets.yaml$
-    age: *gohei
-
   - path_regex: hosts/torii/system/proxy/client/mihomo.yaml$
     age: [ *gohei, *suzu ]
 
@@ -17,4 +14,5 @@ creation_rules:
     age: [ *gohei, *ofuda ]
 
   - path_regex: secrets/email.yaml$
+    encrypted_regex: '^(.*_password)$'
     age: [ *gohei, *ofuda ]

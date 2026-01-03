@@ -8,8 +8,9 @@
 
 let
   secrets = config.sops.secrets;
-  domain = "${config.sops.secrets.domain.path}";
-  mailDomain = "${config.sops.screts.mail_domain.path}";
+
+  domain = "0x7c00.org";
+  mail_domain = "mail.0x7c00.org";
 
   mkDomainAccount =
     {
@@ -19,8 +20,8 @@ let
       primary ? false,
     }:
     {
-      address = "${user}";
-      userName = "${user}";
+      address = "${user}@${domain}";
+      userName = "${user}@${domain}";
       realName = realName;
       primary = primary;
 
@@ -32,9 +33,9 @@ let
         onNotify = "${pkgs.isync}/bin/mbsync ${user}";
       };
 
-      imap.host = mailDomain;
+      imap.host = mail_domain;
       imap.port = 993;
-      smtp.host = mailDomain;
+      smtp.host = mail_domain;
       smtp.port = 465;
 
       msmtp.enable = true;
@@ -86,19 +87,10 @@ in
     dmarc-report_password = {
       sopsFile = "${self}/secrets/email.yaml";
     };
-    main_username = {
-      sopsFile = "${self}/secrets/email.yaml";
-    };
-    main_password = {
+    mbr_password = {
       sopsFile = "${self}/secrets/email.yaml";
     };
     admin_password = {
-      sopsFile = "${self}/secrets/email.yaml";
-    };
-    domain = {
-      sopsFile = "${self}/secrets/email.yaml";
-    };
-    mail_domain = {
       sopsFile = "${self}/secrets/email.yaml";
     };
   };
@@ -106,32 +98,32 @@ in
   accounts.email = {
     accounts = {
       "postmaster@${domain}" = mkDomainAccount {
-        user = "postmaster@${domain}";
+        user = "postmaster";
         realName = "Postmaster";
         passwordPath = secrets.postmaster_password.path;
       };
 
       "admin@${domain}" = mkDomainAccount {
-        user = "admin@${domain}";
+        user = "admin";
         realName = "Administrator";
         passwordPath = secrets.admin_password.path;
       };
       "abuse@${domain}" = mkDomainAccount {
-        user = "abuse@${domain}";
+        user = "abuse";
         realName = "Abuse Report";
         passwordPath = secrets.abuse_password.path;
       };
 
       "dmarc-report@${domain}" = mkDomainAccount {
-        user = "dmarc-report@${domain}";
+        user = "dmarc-report";
         realName = "DMARC Processor";
         passwordPath = secrets.dmarc-report_password.path;
       };
 
-      "${config.sops.secrets.main_username.path}" = mkDomainAccount {
-        user = "${config.sops.secrets.main_username.path}";
+      "mbr@${domain}" = mkDomainAccount {
+        user = "mbr";
         realName = "MBR";
-        passwordPath = secrets.main_password.path;
+        passwordPath = secrets.mbr_password.path;
         primary = true;
       };
     };

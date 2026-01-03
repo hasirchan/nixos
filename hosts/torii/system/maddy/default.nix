@@ -2,20 +2,17 @@
 
 let
   domain = "0x7c00.org";
-  mailDomain = "mail.0x7c00.org";
+  mail_domain = "mail.0x7c00.org";
   adminEmail = "admin@${domain}";
 in {
 
   sops.secrets = {
     cloudflare_dns_api_token = { sopsFile = ./secrets.yaml; };
-    main_username = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
-    main_password = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
+    mbr_password = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
     admin_password = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
     dmarc-report_password = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
     postmaster_password = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
     abuse_password = { sopsFile = "${self}/secrets/email.yaml"; owner = "maddy"; };
-    domain = { sopsFile = "${self}/secrets/email.yaml"; };
-    mail_domain = { sopsFile = "${self}/secrets/email.yaml"; };
   };
 
   networking.firewall.allowedTCPPorts = [ 25 143 465 587 993 ];
@@ -47,8 +44,8 @@ in {
       "abuse@${domain}" = {
         passwordFile = config.sops.secrets.abuse_password.path;
       };
-      "${config.sops.secrets.main_username.path}" = {
-        passwordFile = config.sops.secrets.main_password.path;
+      "mbr@${domain}" = {
+        passwordFile = config.sops.secrets.mbr_password.path;
       };
     };
 
@@ -78,7 +75,7 @@ in {
     defaults.email = adminEmail;
     certs = {
       "${domain}" = {
-        domain = mailDomain;
+        domain = mail_domain;
         group = "maddy";
         dnsProvider = "cloudflare";
         environmentFile = config.sops.secrets.cloudflare_dns_api_token.path;

@@ -12,7 +12,7 @@
     ../../shimenawa/user/pkgs/default.nix
     ../../shimenawa/user/pkgs/tex.nix
     ../../shimenawa/user/pkgs/retroarch.nix
-    #../../torii/user/pkgs/email
+    ../../torii/user/pkgs/email
   ];
 
   wayland.windowManager.hyprland.settings.env =
