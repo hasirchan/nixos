@@ -1,0 +1,52 @@
+; eww config for hyprland
+
+; ━━━━ windows ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x 0 :y 0 :height "15px" :width "100%" :anchor "center top")
+  :stacking "fg" 
+  :exclusive false
+  :focusable false
+  (bar0 :monitor 0))
+
+; ━━━━ bar ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+(defwidget bar0 [monitor] 
+  (box :orientation "h"
+       :space-evenly false
+       :class "bar"
+    (box :class "left"
+         :halign "start"
+         :spacing 6
+         :hexpand false
+      (workspaces :monitor monitor))
+    (box :class "center"
+         :halign "center"
+         :hexpand true)
+    (box :class "right"
+         :halign "end"
+         :spacing 6
+         :hexpand false
+      (datetime))))
+
+; ━━━━ workspaces ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+(deflisten workspaces_data :initial "[]" 
+  "hyprland-workspaces $(hyprctl monitors -j | jq -r '.[0].name') 2>/dev/null || echo '[]'")
+
+(defwidget workspaces [monitor]
+  (box :orientation "h" :class "workspaces"
+    (for wsp in workspaces_data
+      (button :class "workspace ${wsp.class}"
+              :onclick "hyprctl dispatch workspace ${wsp.id}"
+        (label :class "icon" :text "${replace(wsp.name, 'special:', '')}")))))
+
+; ━━━━ datetime ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+(defpoll datetime_poll :interval "1s" "date '+%a %d/%m/%y %H:%M:%S'")
+
+(defwidget datetime []
+  (box :class "datetime"
+    :space-evenly false
+    (label :text datetime_poll)))
