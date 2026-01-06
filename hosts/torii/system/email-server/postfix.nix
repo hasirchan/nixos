@@ -58,6 +58,9 @@ in
         "localhost"
       ];
 
+      virtual_mailbox_domains = [ domain ];
+      masquerade_domains = domain;
+
       mynetworks_style = "host";
       mynetworks = [
         "127.0.0.0/8"
@@ -75,8 +78,6 @@ in
       strict_rfc821_envelopes = "yes";
 
       virtual_transport = "lmtp:unix:private/dovecot-lmtp";
-      virtual_mailbox_domains = [ domain ];
-      masquerade_domains = domain;
 
       smtp_sasl_auth_enable = true;
       smtp_sasl_password_maps = "texthash:${config.sops.secrets.resend_password_maps.path}";
@@ -95,24 +96,20 @@ in
         "/var/lib/acme/${domain}/key.pem"
         "/var/lib/acme/${domain}/fullchain.pem"
       ];
-      smtpd_client_restrictions = [
-        "permit_mynetworks"
-        "permit_sasl_authenticated"
-      ];
-
-      smtpd_sender_restrictions = [
-        "permit_mynetworks"
-        "permit_sasl_authenticated"
-        "reject_unknown_sender_domain"
-      ];
 
       smtpd_recipient_restrictions = [
         "permit_mynetworks"
         "permit_sasl_authenticated"
+
         "reject_unauth_destination"
         "reject_unauth_pipelining"
-        "reject_invalid_hostname"
+
+        "reject_non_fqdn_sender"
         "reject_non_fqdn_recipient"
+
+        "reject_unknown_client_hostname"
+        "reject_unknown_recipient_domain"
+        "reject_unknown_sender_domain"
       ];
 
       smtpd_tls_loglevel = 1;
@@ -150,6 +147,8 @@ in
       smtpd_recipient_restrictions = "permit_sasl_authenticated,reject_unauth_destination";
       milter_macro_daemon_name = "ORIGINATING";
     };
-
+    virtual = ''
+      admin@${domain}  postmaster@${domain}
+    '';
   };
 }
