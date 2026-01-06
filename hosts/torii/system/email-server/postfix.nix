@@ -84,7 +84,6 @@ in
       smtp_sasl_security_options = "noanonymous";
       smtp_sasl_mechanism_filter = "plain,login";
 
-      smtp_use_tls = true;
       smtp_tls_security_level = "encrypt";
       smtp_tls_loglevel = 1;
 
