@@ -7,7 +7,6 @@
 
 {
   imports = [
-    ../../shimenawa/user
-    ../../shimenawa/user/graphical-env/hyprland
+    ../../torii/user
   ];
 }
