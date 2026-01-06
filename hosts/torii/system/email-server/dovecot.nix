@@ -108,10 +108,13 @@ in {
         args = username_format=%u ${config.sops.secrets.dovecot-users.path}
       }
 
+      disable_plaintext_auth=yes
+      auth_mechanisms = plain
       ssl_min_protocol = TLSv1.2
       ssl_cipher_list = EECDH+AESGCM:EDH+AESGCM
       ssl_prefer_server_ciphers = yes
-      
+      ssl=required
+
       log_path = syslog
       syslog_facility = mail
       auth_verbose = no
@@ -124,8 +127,8 @@ in {
       mailbox_list_index = yes
       
       mail_privileged_group = vmail
-      first_valid_uid = 1000
-      last_valid_uid = 65535
+      first_valid_uid = 5000
+      last_valid_uid = 5000
       
       protocol imap {
         mail_max_userip_connections = 20
