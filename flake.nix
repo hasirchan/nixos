@@ -93,7 +93,7 @@
         suzu = mkSystem {
           hostname = "suzu";
           system = "x86_64-linux";
-          bootMode = "systmed-boot";
+          bootMode = "systemd-boot";
         };
         gohei = mkSystem {
           hostname = "gohei";
