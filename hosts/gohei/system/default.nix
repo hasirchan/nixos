@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }:
 
@@ -17,6 +18,7 @@
     ./battery-charge-threshold.nix
     ./nvidia.nix
     ./data.nix
+    "${self}/secrets/email"
   ];
 
   environment.systemPackages = with pkgs; [ quickemu ];
