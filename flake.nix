@@ -64,7 +64,6 @@
                   imports = [
                     ./hosts/${hostname}/user
                   ];
-                  sops.age.keyFile = "/home/saya/.config/sops/age/keys.txt";
                 };
               home-manager.extraSpecialArgs = {
                 inherit inputs self;
@@ -81,10 +80,11 @@
             inputs.sops-nix.nixosModules.sops
 
             inputs.nix-index-database.nixosModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-
-            { networking.hostName = hostname; }
-            ./sops-nix.nix
+            ./secrets
+            {
+              networking.hostName = hostname;
+              programs.nix-index-database.comma.enable = true;
+            }
           ];
         };
     in
