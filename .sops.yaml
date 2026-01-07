@@ -16,3 +16,9 @@ creation_rules:
   - path_regex: secrets/email/secrets.yaml$
     encrypted_regex: '^(.*_password)$'
     age: [ *gohei ]
+
+  - path_regex: secrets/ssh/gohei/gohei.yaml$
+    age: [ *gohei ]
+
+  - path_regex: secrets/ssh/suzu/suzu.yaml$
+    age: [ *suzu ]
