@@ -32,8 +32,6 @@
     pass
     unzip
     pciutils
-    git-crypt
-    sops
   ];
   environment.variables = {
     EDITOR = "nvim";
