@@ -19,6 +19,7 @@
     ./nvidia.nix
     ./data.nix
     "${self}/secrets/email"
+    "${self}/secrets/ssh/gohei"
   ];
 
   environment.systemPackages = with pkgs; [ quickemu ];
