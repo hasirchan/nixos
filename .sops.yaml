@@ -13,6 +13,6 @@ creation_rules:
   - path_regex: hosts/torii/system/email-server/secrets.yaml$
     age: [ *gohei, *ofuda ]
 
-  - path_regex: secrets/email.yaml$
+  - path_regex: secrets/email/secrets.yaml$
     encrypted_regex: '^(.*_password)$'
     age: [ *gohei ]
