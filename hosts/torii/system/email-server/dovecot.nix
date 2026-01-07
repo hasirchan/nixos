@@ -1,7 +1,14 @@
-{ config, pkgs, lib, ... }: let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
   domain = "0x7c00.org";
   mailDomain = "mail.0x7c00.org";
-in {
+in
+{
 
   networking.firewall.allowedTCPPorts = [
     143
@@ -23,20 +30,20 @@ in {
 
   services.dovecot2 = {
     enable = true;
-    
+
     enableImap = true;
     enablePop3 = false;
     enableLmtp = true;
     enablePAM = false;
     enableDHE = true;
-    
+
     sslServerCert = "/var/lib/acme/${domain}/fullchain.pem";
     sslServerKey = "/var/lib/acme/${domain}/key.pem";
-    
+
     mailLocation = "maildir:/var/vmail/%d/%n/Maildir";
 
     mailUser = "vmail";
-    mailGroup = "vmail";   
+    mailGroup = "vmail";
 
     mailboxes = {
       Drafts = {
@@ -76,7 +83,7 @@ in {
         service_count = 1
         process_limit = 512
       }
-      
+
       service auth {
         unix_listener auth-userdb {
           mode = 0640
@@ -97,7 +104,7 @@ in {
           group = postfix
         }
       }
-      
+
       passdb {
         driver = passwd-file
         args = scheme=CRYPT username_format=%u ${config.sops.secrets.dovecot-users.path}
@@ -121,20 +128,20 @@ in {
       auth_debug = no
       mail_debug = no
       verbose_ssl = no
-      
+
       mail_prefetch_count = 20
       mail_cache_fields = flags
       mailbox_list_index = yes
-      
+
       mail_privileged_group = vmail
       first_valid_uid = 5000
       last_valid_uid = 5000
-      
+
       protocol imap {
         mail_max_userip_connections = 20
         imap_idle_notify_interval = 2 mins
       }
-      
+
       protocol lmtp {
         postmaster_address=postmaster@${domain}
         hostname=${mailDomain}

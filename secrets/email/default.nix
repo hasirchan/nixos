@@ -1,4 +1,11 @@
-{ config, lib, pkgs, self, ... }:{
+{
+  config,
+  lib,
+  pkgs,
+  self,
+  ...
+}:
+{
   sops.secrets = {
     abuse_password = {
       sopsFile = ./secrets.yaml;

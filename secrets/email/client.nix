@@ -93,7 +93,7 @@ in
         realName = "Postmaster";
         passwordPath = secrets.postmaster_password.path;
       };
-      
+
       "abuse@${domain}" = mkDomainAccount {
         user = "abuse";
         realName = "Abuse Report";

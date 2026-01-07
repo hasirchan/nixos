@@ -41,7 +41,7 @@ in
       Umask = "007";
     };
   };
-  
+
   users.users.postfix.extraGroups = [ "opendkim" ];
 
   services.postfix = {
