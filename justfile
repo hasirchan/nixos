@@ -6,6 +6,9 @@
 #
 ############################################################################
 
+fmt:
+  fd -e nix -X nixfmt
+
 deploy:
   nixos-rebuild switch --flake . --sudo
 
