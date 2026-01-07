@@ -30,7 +30,7 @@
   };
   home-manager.users.saya = {
     imports = [
-      ./client.nix
+      ./home.nix
     ];
   };
 }
