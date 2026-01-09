@@ -10,10 +10,14 @@
 let
   bootCases = {
     "systemd-boot" = {
+      grub.enable = false;
+      generic-extlinux-compatible.enable = false;
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
     "grub-efi" = {
+      systemd-boot.enable = false;
+      generic-extlinux-compatible.enable = false;
       grub = {
         enable = true;
         device = "nodev";
@@ -22,6 +26,8 @@ let
       efi.canTouchEfiVariables = true;
     };
     "grub-bios" = {
+      systemd-boot.enable = false;
+      generic-extlinux-compatible.enable = false;
       grub = {
         enable = true;
         device = bootDevice;
@@ -29,6 +35,8 @@ let
       };
     };
     "uboot" = {
+      grub.enable = false;
+      systemd-boot.enable = false;
       generic-extlinux-compatible.enable = true;
     };
   };
