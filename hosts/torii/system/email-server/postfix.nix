@@ -11,7 +11,7 @@ in
     465
   ];
   sops.secrets = {
-    cloudflare_dns_api_token = {
+    cloudflare_dns_api_token_for_org = {
       sopsFile = ./secrets.yaml;
     };
 
@@ -22,14 +22,12 @@ in
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "admin@${domain}";
-    certs = {
-      "${domain}" = {
-        domain = mailDomain;
-        dnsProvider = "cloudflare";
-        postRun = "systemctl --no-block restart postfix.service";
-        environmentFile = config.sops.secrets.cloudflare_dns_api_token.path;
-      };
+    certs."${domain}" = {
+      domain = mailDomain;
+      email = "admin@${domain}";
+      dnsProvider = "cloudflare";
+      postRun = "systemctl --no-block restart postfix.service";
+      environmentFile = config.sops.secrets.cloudflare_dns_api_token.path;
     };
   };
 
