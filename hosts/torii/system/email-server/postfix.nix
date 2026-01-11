@@ -27,7 +27,7 @@ in
       email = "admin@${domain}";
       dnsProvider = "cloudflare";
       postRun = "systemctl --no-block restart postfix.service";
-      environmentFile = config.sops.secrets.cloudflare_dns_api_token.path;
+      environmentFile = config.sops.secrets.cloudflare_dns_api_token_for_org.path;
     };
   };
 
