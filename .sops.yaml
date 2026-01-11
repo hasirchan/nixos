@@ -10,6 +10,9 @@ creation_rules:
   - path_regex: hosts/torii/system/proxy/server/sing-box.json$
     age: [ *gohei, *suzu, *ofuda ]
 
+  - path_regex: hosts/torii/system/proxy/server/secrets.yaml$
+    age: [ *gohei, *ofuda ]
+
   - path_regex: hosts/torii/system/email-server/secrets.yaml$
     age: [ *gohei, *ofuda ]
 
