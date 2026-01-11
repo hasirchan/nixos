@@ -1,15 +1,18 @@
 { config, pkgs, ... }:let
   domain = "105386.xyz";
 in {
-  sops.secrets.sing-box-config = {
-    sopsFile = ./sing-box.json;
-    format = "json";
-    key = "";
+
+  sops.secrets = {
+    sing-box-config = {
+      sopsFile = ./sing-box.json;
+      format = "json";
+      key = "";
+    };
+
     cloudflare_dns_api_token_for_xyz = {
       sopsFile = ./secrets.yaml;
     };
   };
-
   services.sing-box = {
     enable = true;
   };
