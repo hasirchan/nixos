@@ -1,0 +1,57 @@
+* {
+  all: unset;
+}
+
+window {
+  background-color: transparent;
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK SC", sans-serif;
+  font-size: 10px;
+}
+
+.bar {
+  background-color: transparent;
+  margin: 0px;
+  padding: 0px;
+}
+
+.workspaces {
+}
+
+.workspace {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin: 0px;
+  padding: 1px 4px;
+  min-width: 12px;
+  .icon {
+  }
+  &:hover {
+    background: rgba(40, 40, 40, 0.7);
+  }
+}
+
+.workspace.workspace-on-screen {
+  .icon {
+  }
+  &:hover {
+  }
+}
+
+.workspace.workspace-active {
+  background: rgba(60, 60, 60, 0.7);
+  border: 1px solid rgba(255, 255, 255, 1);
+  font-weight: 900;
+  .icon {
+  }
+  
+  &:hover {
+    background: rgba(70, 70, 70, 0.7);
+  }
+}
+.datetime {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 1);
+  font-weight: 900;
+  margin: 0px;
+  padding: 1px 4px;
+}

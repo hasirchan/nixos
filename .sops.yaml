@@ -1,0 +1,26 @@
+keys:
+  - &gohei age1dvmuk3rz69nfpyvxpf6xj5m8ej3sumlv8t4s9xcck8tstdudfc2qpxx635
+  - &ofuda age1jchm8fepzp2c25qt8nnfmluwzrseaqn4y3t8d892gx5j8k27j9zq4vghlw
+  - &suzu age1aa6wkqfnkvt8mx2puv0h7kz9njsxglnvkxkzztt293lf48m84sgskwz06e
+  - &omamori age17urgtgj3sum3m4ezgrguhmlle3wmzf8tnrr2t7th96vs7szex38sjv0m4t
+  - &sakaki age1uadw33sguwqchsr3hehpjer79jgm7wufc2cr6vh0v0e6lujcd4yqvshh9r
+
+creation_rules:
+  - path_regex: hosts/torii/system/proxy/client/mihomo.yaml$
+    age: [ *gohei, *suzu, *omamori, *sakaki ]
+
+  - path_regex: hosts/torii/system/proxy/server/sing-box.json$
+    age: [ *gohei, *ofuda ]
+
+  - path_regex: hosts/torii/system/proxy/server/secrets.yaml$
+    age: [ *gohei, *ofuda ]
+
+  - path_regex: hosts/torii/system/email-server/secrets.yaml$
+    age: [ *gohei, *ofuda ]
+
+  - path_regex: secrets/email/secrets.yaml$
+    encrypted_regex: '^(.*_password)$'
+    age: [ *gohei ]
+
+  - path_regex: secrets/ssh/gohei/gohei.yaml$
+    age: [ *gohei ]
